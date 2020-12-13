@@ -17,9 +17,49 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('trangchu', [
-    'as'=>'trang-chu',
+Route::get('trang-chu', [
+    'as'=>'trangchu',
     'uses'=>'App\Http\Controllers\PageController@getIndex'
+]);
+
+Route::get('loai-san-pham', [
+    'as'=>'loaisanpham',
+    'uses'=>'App\Http\Controllers\PageController@getLoaiSp'
+]);
+
+Route::get('chi-tiet-san-pham', [
+    'as'=>'chitietsanpham',
+    'uses'=>'App\Http\Controllers\PageController@getChiTietSp'
+]);
+
+Route::get('lien-he', [
+    'as'=>'lienhe',
+    'uses'=>'App\Http\Controllers\PageController@getLienHe'
+]);
+
+Route::get('gio-hang', [
+    'as'=>'giohang',
+    'uses'=>'App\Http\Controllers\PageController@getGioHang'
+]);
+
+Route::get('thanh-toan', [
+    'as'=>'thanhtoan',
+    'uses'=>'App\Http\Controllers\PageController@getThanhToan'
+]);
+
+Route::get('gioi-thieu', [
+    'as'=>'gioithieu',
+    'uses'=>'App\Http\Controllers\PageController@getGioiThieu'
+]);
+
+Route::get('error', [
+    'as'=>'error',
+    'uses'=>'App\Http\Controllers\PageController@getError'
+]);
+
+Route::get('faq', [
+    'as'=>'faq',
+    'uses'=>'App\Http\Controllers\PageController@getFaq'
 ]);
 
 // Route::get('index','PageController@getIndex');
