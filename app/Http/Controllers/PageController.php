@@ -12,15 +12,17 @@ class PageController extends Controller
         $slide= Slide::all();
         // return view('page.trangchu',['slide'=>$slide]);
         $new_product = Product::where('new',1)->get();
-        return view('page.trangchu',compact('slide','new_product'));
+        $best_product = Product::where('new',0)->get();
+        return view('page.trangchu',compact('slide','new_product','best_product'));
     }
 
     public function getLoaiSp(){
         return view('page.loai_sanpham');
     }
 
-    public function getChiTietSp(){
-        return view('page.chitiet_sanpham');
+    public function getChiTietSp(Request $reg){
+        $sanpham=Product::where('id',$reg->id)->first();
+        return view('page.chitiet_sanpham',compact('sanpham'));
     }
 
     public function getLienHe(){

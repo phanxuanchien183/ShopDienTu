@@ -6,8 +6,8 @@
                 <div class="container">
                     <div class="breadcrumb-content">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li class="active">Single Product</li>
+                            <li><a href="{{route('trangchu')}}">Trang chủ</a></li>
+                            <li class="active">Chi tiết sản phẩm</li>
                         </ul>
                     </div>
                 </div>
@@ -22,44 +22,20 @@
                             <div class="product-details-left">
                                 <div class="product-details-images slider-navigation-1">
                                     <div class="lg-image">
-                                        <a class="popup-img venobox vbox-item" href="images/product/large-size/1.jpg" data-gall="myGallery">
-                                            <img src="uiStore/images/product/large-size/1.jpg" alt="product image">
+                                        <a class="popup-img venobox vbox-item" href="{{ URL::to('uiStore/images/product/smallsize') }}/{{ $sanpham->image }}" data-gall="myGallery">
+                                            <img src="{{ URL::to('uiStore/images/product/smallsize') }}/{{ $sanpham->image }}" alt="product image">
                                         </a>
                                     </div>
-                                    <div class="lg-image">
-                                        <a class="popup-img venobox vbox-item" href="images/product/large-size/2.jpg" data-gall="myGallery">
-                                            <img src="uiStore/images/product/large-size/2.jpg" alt="product image">
-                                        </a>
-                                    </div>
-                                    <div class="lg-image">
-                                        <a class="popup-img venobox vbox-item" href="images/product/large-size/3.jpg" data-gall="myGallery">
-                                            <img src="uiStore/images/product/large-size/3.jpg" alt="product image">
-                                        </a>
-                                    </div>
-                                    <div class="lg-image">
-                                        <a class="popup-img venobox vbox-item" href="images/product/large-size/4.jpg" data-gall="myGallery">
-                                            <img src="uiStore/images/product/large-size/4.jpg" alt="product image">
-                                        </a>
-                                    </div>
-                                    <div class="lg-image">
-                                        <a class="popup-img venobox vbox-item" href="images/product/large-size/5.jpg" data-gall="myGallery">
-                                            <img src="uiStore/images/product/large-size/5.jpg" alt="product image">
-                                        </a>
-                                    </div>
-                                    <div class="lg-image">
-                                        <a class="popup-img venobox vbox-item" href="images/product/large-size/6.jpg" data-gall="myGallery">
-                                            <img src="uiStore/images/product/large-size/6.jpg" alt="product image">
-                                        </a>
-                                    </div>
+                                    
                                 </div>
-                                <div class="product-details-thumbs slider-thumbs-1">                                        
+                                {{-- <div class="product-details-thumbs slider-thumbs-1">                                        
                                     <div class="sm-image"><img src="uiStore/images/product/small-size/1.jpg" alt="product image thumb"></div>
                                     <div class="sm-image"><img src="uiStore/images/product/small-size/2.jpg" alt="product image thumb"></div>
                                     <div class="sm-image"><img src="uiStore/images/product/small-size/3.jpg" alt="product image thumb"></div>
                                     <div class="sm-image"><img src="uiStore/images/product/small-size/4.jpg" alt="product image thumb"></div>
                                     <div class="sm-image"><img src="uiStore/images/product/small-size/5.jpg" alt="product image thumb"></div>
                                     <div class="sm-image"><img src="uiStore/images/product/small-size/6.jpg" alt="product image thumb"></div>
-                                </div>
+                                </div> --}}
                             </div>
                             <!--// Product Details Left -->
                         </div>
@@ -67,8 +43,8 @@
                         <div class="col-lg-7 col-md-6">
                             <div class="product-details-view-content pt-60">
                                 <div class="product-info">
-                                    <h2>Today is a good day Framed poster</h2>
-                                    <span class="product-details-ref">Reference: demo_15</span>
+                                    <h2>{{$sanpham->name}}</h2>
+                                    {{-- <span class="product-details-ref">Reference: demo_15</span> --}}
                                     <div class="rating-box pt-20">
                                         <ul class="rating rating-with-review-item">
                                             <li><i class="fa fa-star-o"></i></li>
@@ -81,15 +57,14 @@
                                         </ul>
                                     </div>
                                     <div class="price-box pt-20">
-                                        <span class="new-price new-price-2">$57.98</span>
+                                        <span class="new-price new-price-2">${{$sanpham->promotion_price}}</span>
                                     </div>
                                     <div class="product-desc">
                                         <p>
-                                            <span>100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
-                                            </span>
+                                            <span>{{$sanpham->description}}</span>
                                         </p>
                                     </div>
-                                    <div class="product-variants">
+                                    {{-- <div class="product-variants">
                                         <div class="produt-variants-size">
                                             <label>Dimension</label>
                                             <select class="nice-select">
@@ -98,7 +73,7 @@
                                                 <option value="3" title="L">80x120cm</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="single-add-to-cart">
                                         <form action="#" class="cart-quantity">
                                             <div class="quantity">

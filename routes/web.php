@@ -13,9 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/', [
+//     'as'=>'trangchu',
+//     'uses'=>'App\Http\Controllers\PageController@getIndex'
+// ]);
+
+Route::redirect('/', 'trang-chu');
 
 Route::get('trang-chu', [
     'as'=>'trangchu',
@@ -27,7 +34,7 @@ Route::get('loai-san-pham', [
     'uses'=>'App\Http\Controllers\PageController@getLoaiSp'
 ]);
 
-Route::get('chi-tiet-san-pham', [
+Route::get('chi-tiet-san-pham/{id}', [
     'as'=>'chitietsanpham',
     'uses'=>'App\Http\Controllers\PageController@getChiTietSp'
 ]);
