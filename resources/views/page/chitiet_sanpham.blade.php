@@ -26,6 +26,11 @@
                                             <img src="{{ URL::to('uiStore/images/product/smallsize') }}/{{ $sanpham->image }}" alt="product image">
                                         </a>
                                     </div>
+                                    {{-- <div class="lg-image">
+                                        <a class="popup-img venobox vbox-item" href="{{ asset("uiStore/images/product/smallsize/$sanpham->image")}}" data-gall="myGallery">
+                                            <img src="{{ asset("uiStore/images/product/smallsize/$sanpham->image")}}" alt="product image">
+                                        </a>
+                                    </div> --}}
                                     
                                 </div>
                                 {{-- <div class="product-details-thumbs slider-thumbs-1">                                        
