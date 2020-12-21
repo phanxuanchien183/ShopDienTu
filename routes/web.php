@@ -29,7 +29,7 @@ Route::get('trang-chu', [
     'uses'=>'App\Http\Controllers\PageController@getIndex'
 ]);
 
-Route::get('loai-san-pham', [
+Route::get('loai-san-pham/{type}', [
     'as'=>'loaisanpham',
     'uses'=>'App\Http\Controllers\PageController@getLoaiSp'
 ]);

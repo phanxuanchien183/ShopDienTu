@@ -21,16 +21,16 @@
                            <!-- Product Details Left -->
                             <div class="product-details-left">
                                 <div class="product-details-images slider-navigation-1">
-                                    <div class="lg-image">
+                                    {{-- <div class="lg-image">
                                         <a class="popup-img venobox vbox-item" href="{{ URL::to('uiStore/images/product/smallsize') }}/{{ $sanpham->image }}" data-gall="myGallery">
                                             <img src="{{ URL::to('uiStore/images/product/smallsize') }}/{{ $sanpham->image }}" alt="product image">
                                         </a>
-                                    </div>
-                                    {{-- <div class="lg-image">
+                                    </div> --}}
+                                    <div class="lg-image">
                                         <a class="popup-img venobox vbox-item" href="{{ asset("uiStore/images/product/smallsize/$sanpham->image")}}" data-gall="myGallery">
                                             <img src="{{ asset("uiStore/images/product/smallsize/$sanpham->image")}}" alt="product image">
                                         </a>
-                                    </div> --}}
+                                    </div>
                                     
                                 </div>
                                 {{-- <div class="product-details-thumbs slider-thumbs-1">                                        

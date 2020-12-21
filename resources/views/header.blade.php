@@ -230,14 +230,26 @@
                                 <div class="hb-menu">
                                     <nav>
                                         <ul>
-                                            <li class="dropdown-holder"><a href="index.html">Home</a>
-                                                <ul class="hb-dropdown">
+                                            <li class="dropdown-holder"><a href="{{route('trangchu')}}">Trang chủ</a>
+                                                {{-- <ul class="hb-dropdown">
                                                     <li class="active"><a href="index.html">Home One</a></li>
                                                     <li><a href="index-2.html">Home Two</a></li>
                                                     <li><a href="index-3.html">Home Three</a></li>
                                                     <li><a href="index-4.html">Home Four</a></li>
+                                                </ul> --}}
+                                            </li>
+                                            <li class="dropdown-holder"><a >Loại sản phẩm</a>
+                                                <ul class="hb-dropdown">
+                                                    {{-- <li class="active"><a href="index.html">Home One</a></li> --}}
+                                                    @foreach ($loai_sp as $loai)
+                                                        <li><a href="{{route('loaisanpham',$loai->id)}}">{{$loai->name}}</a></li>
+                                                    @endforeach
+                                                    
+                                                    {{-- <li><a href="index-3.html">Home Three</a></li>
+                                                    <li><a href="index-4.html">Home Four</a></li> --}}
                                                 </ul>
                                             </li>
+                                            
                                             <li class="megamenu-holder"><a href="shop-left-sidebar.html">Shop</a>
                                                 <ul class="megamenu hb-megamenu">
                                                     <li><a href="shop-left-sidebar.html">Shop Page Layout</a>
