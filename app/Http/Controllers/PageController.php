@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Slide;
 use App\Models\Product;
+use App\Models\Cart;
+use Session;
 
 class PageController extends Controller
 {
@@ -13,11 +15,12 @@ class PageController extends Controller
         // return view('page.trangchu',['slide'=>$slide]);
         $new_product = Product::where('new',1)->get();
         $best_product = Product::where('new',0)->get();
-        return view('page.trangchu',compact('slide','new_product','best_product'));
+        $sell_product = Product::where('new',2)->get();
+        return view('page.trangchu',compact('slide','new_product','best_product','sell_product'));
     }
 
     public function getLoaiSp($type){
-        $sp_theoloai=Product::where('id_type',$type)->get();
+        $sp_theoloai=Product::where('id_type',$type)->paginate(5);
         return view('page.loai_sanpham',compact('sp_theoloai'));
     }
 
@@ -48,5 +51,22 @@ class PageController extends Controller
 
     public function getFaq(){
         return view('page.faq');
+    }
+
+    public function getAddtoCart(Request $req, $id){
+        $product= Product::find($id);
+        $oldCart= Session('cart')?Session::get('cart'):null;
+        $cart= new Cart($oldCart);
+        $cart->add($product,$id);
+        $req->session()->put('cart',$cart);
+        return redirect()->back();
+    }
+
+    public function getDeltoCart($id){
+        $oldCart= Session::has('cart')?Session::get('cart'):null;
+        $cart= new cart($oldCart);
+        $cart->removeItem($id);
+        Session::put('cart',$cart);
+        return redirect()->back();
     }
 }

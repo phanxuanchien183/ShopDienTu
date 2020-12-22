@@ -169,6 +169,7 @@
             </div>   
             <!-- Quick View | Modal Area End Here -->
         </div>
+        
         <!-- Body Wrapper End Here -->
         <!-- jQuery-V1.12.4 -->
         <script src="{{asset('uiStore/js/vendor/jquery-1.12.4.min.js')}}"></script>

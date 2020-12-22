@@ -570,7 +570,10 @@
                                                             <a href="single-product.html">
                                                                 <img src="{{ asset("uiStore/images/product/smallsize/$sp->image")}}" alt="Li's Product Image">
                                                             </a>
-                                                            <span class="sticker">New</span>
+                                                            @if ($sp->new==1)
+                                                                <span class="sticker">New</span>                                                            
+                                                            @endif
+                                                            
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-5 col-md-7">
@@ -592,7 +595,7 @@
                                                                 </div>
                                                                 <h4><a class="product_name" href="single-product.html">{{$sp->name}}</a></h4>
                                                                 <div class="price-box">
-                                                                    <span class="new-price">$46.80</span>
+                                                                    <span class="new-price">${{$sp->promotion_price}}</span>
                                                                 </div>
                                                                 <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant 360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With Exquisite Sound via Ring Radiator Technology. Stream And Control R3 Speakers Wirelessly With Your Smartphone. Sophisticated, Modern Desig</p>
                                                             </div>
@@ -621,7 +624,7 @@
                                                 <p>Tìm thấy {{count($sp_theoloai)}} sản phẩm</p>
                                             </div>
                                             <div class="col-lg-6 col-md-6">
-                                                <ul class="pagination-box">
+                                                {{-- <ul class="pagination-box ">
                                                     <li><a href="#" class="Previous"><i class="fa fa-chevron-left"></i> Previous</a>
                                                     </li>
                                                     <li class="active"><a href="#">1</a></li>
@@ -630,7 +633,9 @@
                                                     <li>
                                                       <a href="#" class="Next"> Next <i class="fa fa-chevron-right"></i></a>
                                                     </li>
-                                                </ul>
+                                                   
+                                                </ul> --}}
+                                                 <div class="row">{!! $sp_theoloai->render() !!}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -785,4 +790,17 @@
                     </div>
                 </div>
             </div>
+            <style>
+                .w-5.h-5{
+                    display: inline;
+                    width: 30px;
+                    height: 30px;
+                }
+                .flex .justify-between .flex-1 .sm:hidden{
+                    display:none;
+                }
+                .text-sm .text-gray-700 .leading-5{
+                    display:none;
+                }
+            </style>
     @endsection

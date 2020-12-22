@@ -69,5 +69,15 @@ Route::get('faq', [
     'uses'=>'App\Http\Controllers\PageController@getFaq'
 ]);
 
+Route::get('add-to-cart/{id}', [
+    'as'=>'themgiohang',
+    'uses'=>'App\Http\Controllers\PageController@getAddtoCart'
+]);
+
+Route::get('del-to-cart/{id}', [
+    'as'=>'xoagiohang',
+    'uses'=>'App\Http\Controllers\PageController@getDeltoCart'
+]);
+
 // Route::get('index','PageController@getIndex');
 

@@ -165,42 +165,36 @@
                                         </li>
                                         <!-- Header Middle Wishlist Area End Here -->
                                         <!-- Begin Header Mini Cart Area -->
-                                        <li class="hm-minicart">
+                                        <li class="hm-minicart">                                            
                                             <div class="hm-minicart-trigger">
                                                 <span class="item-icon"></span>
-                                                <span class="item-text">£80.00
-                                                    <span class="cart-item-count">2</span>
+                                                <span class="item-text">£@if(Session::has('cart')){{Session('cart')->totalPrice}}@else 0 @endif
+                                                    <span class="cart-item-count">@if(Session::has('cart')){{Session('cart')->totalQty}}@else 0 @endif</span>
                                                 </span>
                                             </div>
                                             <span></span>
                                             <div class="minicart">
+                                                
                                                 <ul class="minicart-product-list">
-                                                    <li>
+                                                @if(Session::has('cart'))
+                                                    @foreach ($product_cart as $product)
+                                                        <li>
                                                         <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="uiStore/images/product/small-size/5.jpg" alt="cart products">
+                                                            <img src="uiStore/images/product/smallsize/{{$product['item']['image']}}" alt="cart products">
                                                         </a>
                                                         <div class="minicart-product-details">
-                                                            <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                            <span>£40 x 1</span>
+                                                            <h6><a href="single-product.html">{{$product['item']['name']}}</a></h6>
+                                                            <span>£{{$product['item']['unit_price']}} x {{$product['qty']}}</span>
                                                         </div>
-                                                        <button class="close" title="Remove">
-                                                            <i class="fa fa-close"></i>
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="uiStore/images/product/small-size/6.jpg" alt="cart products">
+                                                        <a class="fa fa-close" title="Remove" href="{{route('xoagiohang',$product['item']['id'])}}">
+                                                            
                                                         </a>
-                                                        <div class="minicart-product-details">
-                                                            <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                            <span>£40 x 1</span>
-                                                        </div>
-                                                        <button class="close" title="Remove">
-                                                            <i class="fa fa-close"></i>
-                                                        </button>
                                                     </li>
+                                                    @endforeach
+                                                    
+                                                @endif
                                                 </ul>
-                                                <p class="minicart-total">SUBTOTAL: <span>£80.00</span></p>
+                                                <p class="minicart-total">SUBTOTAL: <span>£@if(Session::has('cart')){{Session('cart')->totalPrice}}@else 0 @endif</span></p>
                                                 <div class="minicart-button">
                                                     <a href="shopping-cart.html" class="li-button li-button-fullwidth li-button-dark">
                                                         <span>View Full Cart</span>
