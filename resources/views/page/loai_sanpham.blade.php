@@ -619,11 +619,11 @@
                                     </div>
                                     <div class="paginatoin-area">
                                         <div class="row">
-                                            <div class="col-lg-6 col-md-6">
+                                            {{-- <div class="col-lg-6 col-md-6"> --}}
                                                 {{-- <p>Showing 1-12 of 13 item(s)</p> --}}
-                                                <p>Tìm thấy {{count($sp_theoloai)}} sản phẩm</p>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
+                                                {{-- <p>Tìm thấy {{count($sp_theoloai)}} sản phẩm</p>
+                                            </div> --}}
+                                            <div class="col-lg-12 col-md-12">
                                                 {{-- <ul class="pagination-box ">
                                                     <li><a href="#" class="Previous"><i class="fa fa-chevron-left"></i> Previous</a>
                                                     </li>

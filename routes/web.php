@@ -39,6 +39,11 @@ Route::get('chi-tiet-san-pham/{id}', [
     'uses'=>'App\Http\Controllers\PageController@getChiTietSp'
 ]);
 
+Route::get('modal-chi-tiet-san-pham/{id}', [
+    'as'=>'modalchitietsanpham',
+    'uses'=>'App\Http\Controllers\PageController@getModalChiTietSp'
+]);
+
 Route::get('lien-he', [
     'as'=>'lienhe',
     'uses'=>'App\Http\Controllers\PageController@getLienHe'
@@ -78,6 +83,8 @@ Route::get('del-to-cart/{id}', [
     'as'=>'xoagiohang',
     'uses'=>'App\Http\Controllers\PageController@getDeltoCart'
 ]);
+
+
 
 // Route::get('index','PageController@getIndex');
 

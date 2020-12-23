@@ -16,7 +16,9 @@ class PageController extends Controller
         $new_product = Product::where('new',1)->get();
         $best_product = Product::where('new',0)->get();
         $sell_product = Product::where('new',2)->get();
-        return view('page.trangchu',compact('slide','new_product','best_product','sell_product'));
+        $laptop=Product::where('id_type',7)->get();
+        $tv=Product::where('id_type',1)->get();
+        return view('page.trangchu',compact('slide','new_product','best_product','sell_product','laptop','tv'));
     }
 
     public function getLoaiSp($type){
@@ -27,6 +29,11 @@ class PageController extends Controller
     public function getChiTietSp(Request $reg){
         $sanpham=Product::where('id',$reg->id)->first();
         return view('page.chitiet_sanpham',compact('sanpham'));
+    }
+
+    public function getModalChiTietSp(Request $reg){
+        $sanpham=Product::where('id',$reg->id)->first();
+        return view(redirect()->back(),compact('sanpham'));
     }
 
     public function getLienHe(){
