@@ -84,7 +84,10 @@ Route::get('del-to-cart/{id}', [
     'uses'=>'App\Http\Controllers\PageController@getDeltoCart'
 ]);
 
-
+Route::post('dat-hang', [
+    'as'=>'dathang',
+    'uses'=>'App\Http\Controllers\PageController@postCheckout'
+]);
 
 // Route::get('index','PageController@getIndex');
 

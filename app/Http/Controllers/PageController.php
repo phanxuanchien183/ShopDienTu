@@ -73,7 +73,16 @@ class PageController extends Controller
         $oldCart= Session::has('cart')?Session::get('cart'):null;
         $cart= new cart($oldCart);
         $cart->removeItem($id);
-        Session::put('cart',$cart);
+        if(count($cart->items)>0){
+            Session::put('cart',$cart);
+        }
+        else {
+            Session::forget('cart');
+        }
         return redirect()->back();
+    }
+
+    public function postCheckout(Request $req){
+
     }
 }
