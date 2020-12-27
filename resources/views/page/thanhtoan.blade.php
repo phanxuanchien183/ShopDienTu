@@ -13,7 +13,10 @@
             <!-- Li's Breadcrumb Area End Here -->
             <!--Checkout Area Strat-->
             <div class="checkout-area pt-60 pb-30">
+                <form action="{{route('dathang')}}" method="POST">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="container">
+                   
                     <div class="row">
                         <div class="col-12">
                             <div class="coupon-accordion">
@@ -61,56 +64,36 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-6 col-12">
-                            <form action="#">
+                            
+                                {{-- <input type='hidden' name="_token" value="{{csrf_token}}"> --}}
                                 <div class="checkbox-form">
                                     <h3>Billing Details</h3>
                                     <div class="row">
+                                        
+                                        <div class="col-md-12">
+                                            <div class="checkout-form-list">
+                                                <label>Họ tên <span class="required">*</span></label>
+                                                <input placeholder="" name="name" id="name" type="text">
+                                            </div>
+                                        </div>
                                         <div class="col-md-12">
                                             <div class="country-select clearfix">
-                                                <label>Country <span class="required">*</span></label>
-                                                <select class="nice-select wide">
-                                                  <option data-display="Bangladesh">Bangladesh</option>
-                                                  <option value="uk">London</option>
-                                                  <option value="rou">Romania</option>
-                                                  <option value="fr">French</option>
+                                                <label>Giới tính <span class="required">*</span></label>
+                                                <select id="gender"  name="gender" class="nice-select wide">
+                                                  <option data-display="Nam">Nam</option>
+                                                  {{-- <option value="uk">Nam</option> --}}
+                                                  <option value="rou">Nữ</option>
+                                                  {{-- <option value="fr">French</option>
                                                   <option value="de">Germany</option>
-                                                  <option value="aus">Australia</option>
+                                                  <option value="aus">Australia</option> --}}
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="checkout-form-list">
-                                                <label>First Name <span class="required">*</span></label>
-                                                <input placeholder="" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="checkout-form-list">
-                                                <label>Last Name <span class="required">*</span></label>
-                                                <input placeholder="" type="text">
-                                            </div>
-                                        </div>
+                                        
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
-                                                <label>Company Name</label>
-                                                <input placeholder="" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <label>Address <span class="required">*</span></label>
-                                                <input placeholder="Street address" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <label>Town / City <span class="required">*</span></label>
-                                                <input type="text">
+                                                <label>Địa chỉ <span class="required">*</span></label>
+                                                <input id="address" name="address" type="text">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -128,14 +111,41 @@
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Email Address <span class="required">*</span></label>
-                                                <input placeholder="" type="email">
+                                                <input id="email" name="email" placeholder="" type="email">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Phone  <span class="required">*</span></label>
-                                                <input type="text">
+                                                <input id="phone" name="phone" type="text">
                                             </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="order-notes">
+                                                <div class="checkout-form-list">
+                                                    <label>Ghi chú</label>
+                                                    <input id="note" name="note" cols="30" rows="10" placeholder="Ghi chú thêm"></input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label>Phương thức thanh toán </label>
+                                            <div class="checkout-form-list">
+                                                <input style="height: 20px" class="form-check-input" value="COD" type="radio" name="payment" id="exampleRadios1" value="option1" checked>
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    COD
+                                                </label>
+                                            </div>
+                                            <div class="checkout-form-list">
+                                                <input style="height: 20px" class="form-check-input" value="ATM" type="radio" name="payment" id="exampleRadios2" value="option2">
+                                                <label class="form-check-label" for="exampleRadios2">
+                                                    Trả thẻ ATM
+                                                </label>
+                                            </div>
+                                            {{-- <div class="checkout-form-list create-acc">
+                                                <input id="cbox" type="checkbox">
+                                                <label>Create an account?</label>
+                                            </div> --}}
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list create-acc">
@@ -238,7 +248,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            
                         </div>
                         <div class="col-lg-6 col-12">
                             <div class="your-order">
@@ -327,6 +337,7 @@
                             </div>
                         </div>
                     </div>
+                </form>
                 </div>
             </div>
 @endsection

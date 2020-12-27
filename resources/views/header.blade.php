@@ -199,7 +199,7 @@
                                                     <a href="shopping-cart.html" class="li-button li-button-fullwidth li-button-dark">
                                                         <span>View Full Cart</span>
                                                     </a>
-                                                    <a href="checkout.html" class="li-button li-button-fullwidth">
+                                                    <a href="{{route('dathang')}}" class="li-button li-button-fullwidth">
                                                         <span>Checkout</span>
                                                     </a>
                                                 </div>
