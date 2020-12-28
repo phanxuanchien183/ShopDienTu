@@ -65,7 +65,6 @@
                     <div class="row">
                         <div class="col-lg-6 col-12">
                             
-                                {{-- <input type='hidden' name="_token" value="{{csrf_token}}"> --}}
                                 <div class="checkbox-form">
                                     <h3>Billing Details</h3>
                                     <div class="row">
@@ -255,30 +254,36 @@
                                 <h3>Your order</h3>
                                 <div class="your-order-table table-responsive">
                                     <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th class="cart-product-name">Product</th>
-                                                <th class="cart-product-total">Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="cart_item">
-                                              <td class="cart-product-name"> Vestibulum suscipit<strong class="product-quantity"> × 1</strong></td>
-                                              <td class="cart-product-total"><span class="amount">£165.00</span></td>  
-                                            </tr>
-                                            <tr class="cart_item">
-                                              <td class="cart-product-name"> Vestibulum suscipit<strong class="product-quantity"> × 1</strong></td>
-                                              <td class="cart-product-total"><span class="amount">£165.00</span></td>  
-                                            </tr>
-                                        </tbody>
+                                       
+                                                <thead>
+                                                    <tr>
+                                                        <th class="cart-product-name">Product</th>
+                                                        <th class="cart-product-total">Total</th>
+                                                    </tr>
+                                                </thead>
+                                                @if (Session::has('cart'))
+                                                    @foreach($product_cart as $product)
+                                                <tbody>
+                                                    <tr class="cart_item">
+                                                    <td class="cart-product-name"> {{$product['item']['name']}}<strong class="product-quantity"> × {{$product['qty']}}</strong></td>
+                                                    <td class="cart-product-total"><span class="amount">£{{$product['item']['unit_price']}}</span></td>  
+                                                    </tr>
+                                                    {{-- <tr class="cart_item">
+                                                    <td class="cart-product-name"> Vestibulum suscipit<strong class="product-quantity"> × 1</strong></td>
+                                                    <td class="cart-product-total"><span class="amount">£165.00</span></td>  
+                                                    </tr> --}}
+                                                        </tbody>
+                                                    @endforeach
+                                                @endif
+                                        
                                         <tfoot>
-                                            <tr class="cart-subtotal">
+                                            {{-- <tr class="cart-subtotal">
                                                 <th>Cart Subtotal</th>
                                                 <td><span class="amount">£215.00</span></td>
-                                            </tr>
+                                            </tr> --}}
                                             <tr class="order-total">
                                                 <th>Order Total</th>
-                                                <td><strong><span class="amount">£215.00</span></strong></td>
+                                                <td><strong><span class="amount">£@if(Session::has('cart')){{Session('cart')->totalPrice}}@else 0 @endif</span></strong></td>
                                             </tr>
                                         </tfoot>
                                     </table>

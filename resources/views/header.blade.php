@@ -18,12 +18,12 @@
                                     <ul class="ht-menu">
                                         <!-- Begin Setting Area -->
                                         <li>
-                                            <div class="ht-setting-trigger"><span>Setting</span></div>
+                                            <div class="ht-setting-trigger"><span>Login</span></div>
                                             <div class="setting ht-setting">
                                                 <ul class="ht-setting-list">
-                                                    <li><a href="login-register.html">My Account</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                    <li><a href="login-register.html">Sign In</a></li>
+                                                    {{-- <li><a href="login-register.html">My Account</a></li> --}}
+                                                    {{-- <li><a href="checkout.html">Checkout</a></li> --}}
+                                                    <li><a href="{{route('dangkydangnhap')}}">Sign In and Register</a></li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -67,7 +67,7 @@
                             <!-- Begin Header Logo Area -->
                             <div class="col-lg-3">
                                 <div class="logo pb-sm-30 pb-xs-30">
-                                    <a href="index.html">
+                                    <a href="{{route('trangchu')}}">
                                         <img src="uiStore/images/menu/logo/1.jpg" alt="">
                                     </a>
                                 </div>

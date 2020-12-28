@@ -29,6 +29,16 @@ Route::get('trang-chu', [
     'uses'=>'App\Http\Controllers\PageController@getIndex'
 ]);
 
+Route::get('dang-ky-dang-nhap', [
+    'as'=>'dangkydangnhap',
+    'uses'=>'App\Http\Controllers\PageController@getDangKyDangNhap'
+]);
+
+Route::post('dang-ky-dang-nhap', [
+    'as'=>'dangkydangnhap',
+    'uses'=>'App\Http\Controllers\PageController@postDangKyDangNhap'
+]);
+
 Route::get('loai-san-pham/{type}', [
     'as'=>'loaisanpham',
     'uses'=>'App\Http\Controllers\PageController@getLoaiSp'

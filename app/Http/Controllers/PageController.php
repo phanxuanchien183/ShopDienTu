@@ -9,8 +9,10 @@ use App\Models\Slide;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use Session;
+use Hash;
 
 class PageController extends Controller
 {
@@ -120,5 +122,36 @@ class PageController extends Controller
         }
         Session::forget('cart');
         return redirect()->back()->with('thongbao','Đặt hàng thành công');
+    }
+
+    public function getDangKyDangNhap(){
+        return view('page.dangky_dangnhap');
+    }
+
+    public function postDangKyDangNhap(Request $req){
+        $this->validate($req,
+            [
+                'email'=>'required|email|unique:users,email',
+                'password'=>'required|min:6|max:20',
+                'fullname'=>'required',
+                're_password'=>'required|same:password'
+            ],
+            [
+                'email.requied'=>'Please enter your email',
+                'email.email'=>'Email format is not correct',
+                'email.unique'=>'Email already exists',
+                'password.requied'=>'Please enter a password',
+                're_password.same'=>'password is not the same',
+                'password.min'=>'short password'
+            ],
+        );
+        $user= new User();
+        $user->full_name =$req-> fullname;
+        $user->email = $req->email;
+        $user->password = Hash::make($req->password);
+        $user->phone = $req->phone;
+        $user->address = $req->adress;
+        $user->save();
+        return redirect()->back()->with('thanhcong','Create Account Success');
     }
 }
