@@ -18,14 +18,26 @@
                                     <ul class="ht-menu">
                                         <!-- Begin Setting Area -->
                                         <li>
-                                            <div class="ht-setting-trigger"><span>Login</span></div>
-                                            <div class="setting ht-setting">
-                                                <ul class="ht-setting-list">
-                                                    {{-- <li><a href="login-register.html">My Account</a></li> --}}
-                                                    {{-- <li><a href="checkout.html">Checkout</a></li> --}}
-                                                    <li><a href="{{route('dangkydangnhap')}}">Sign In and Register</a></li>
-                                                </ul>
-                                            </div>
+                                            @if (Auth::check())
+                                                <div class="ht-setting-trigger"><span>Xin chào {{Auth::user()->full_name}}</span></div>
+                                                <div class="setting ht-setting">
+                                                    <ul class="ht-setting-list">
+                                                        {{-- <li><a href="login-register.html">My Account</a></li> --}}
+                                                        <li><a href="{{route('dangxuat')}}">Đăng xuất</a></li>
+                                                        {{-- <li><a href="{{route('dangky')}}">Register</a></li> --}}
+                                                    </ul>
+                                                </div>
+                                            @else
+                                                <div class="ht-setting-trigger"><span>Account</span></div>
+                                                <div class="setting ht-setting">
+                                                    <ul class="ht-setting-list">
+                                                        {{-- <li><a href="login-register.html">My Account</a></li> --}}
+                                                        <li><a href="{{route('dangnhap')}}">Login</a></li>
+                                                        <li><a href="{{route('dangky')}}">Register</a></li>
+                                                    </ul>
+                                                </div>
+                                            @endif
+                                            
                                         </li>
                                         <!-- Setting Area End Here -->
                                         <!-- Begin Currency Area -->
@@ -76,7 +88,7 @@
                             <!-- Begin Header Middle Right Area -->
                             <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
                                 <!-- Begin Header Middle Searchbox Area -->
-                                <form action="#" class="hm-searchbox">
+                                <form action="{{route('timkiem')}}" method="GET" class="hm-searchbox">
                                     <select class="nice-select select-search-category">
                                         <option value="0">All</option>                         
                                         <option value="10">Laptops</option>                     
@@ -149,8 +161,8 @@
                                         <option value="15">Smartwatch</option>                           
                                         <option value="16">Accessories</option>
                                     </select>
-                                    <input type="text" placeholder="Enter your search key ...">
-                                    <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
+                                    <input type="text" name="key" placeholder="Enter your search key ...">
+                                    <button class="li-btn" type="submit" ><i class="fa fa-search"></i></button>
                                 </form>
                                 <!-- Header Middle Searchbox Area End Here -->
                                 <!-- Begin Header Middle Right Area -->

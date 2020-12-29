@@ -13,6 +13,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use Session;
 use Hash;
+// use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -124,11 +126,39 @@ class PageController extends Controller
         return redirect()->back()->with('thongbao','Đặt hàng thành công');
     }
 
-    public function getDangKyDangNhap(){
-        return view('page.dangky_dangnhap');
+    public function getDangNhap(){
+        return view('page.dangnhap');
     }
 
-    public function postDangKyDangNhap(Request $req){
+    public function postDangNhap(Request $req){
+        $this->validate($req,
+            [
+                'email'=>'required|email',
+                'password'=>'required|min:6|max:20',
+            ],
+            [
+                'email.requied'=>'Please enter your email',
+                'email.email'=>'Email format is not correct',
+                'password.requied'=>'Please enter a password',
+                'password.min'=>'password at least 6 characters',
+                'password.max'=>'password must not exceed 20 characters'
+            ]
+            );
+            $credentials = array('email'=>$req->email,
+                                'password'=>$req->password);
+            if(Auth::attempt($credentials)){
+                return redirect()->route('trangchu')->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
+            }
+            else {
+                return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
+            }
+    }
+
+    public function getDangKy(){
+        return view('page.dangky');
+    }
+
+    public function postDangKy(Request $req){
         $this->validate($req,
             [
                 'email'=>'required|email|unique:users,email',
@@ -142,7 +172,8 @@ class PageController extends Controller
                 'email.unique'=>'Email already exists',
                 'password.requied'=>'Please enter a password',
                 're_password.same'=>'password is not the same',
-                'password.min'=>'short password'
+                'password.min'=>'password at least 6 characters',
+                'password.max'=>'password must not exceed 20 characters'
             ],
         );
         $user= new User();
@@ -153,5 +184,17 @@ class PageController extends Controller
         $user->address = $req->adress;
         $user->save();
         return redirect()->back()->with('thanhcong','Create Account Success');
+    }
+
+    public function postDangXuat(){
+        Auth::logout();
+        return redirect()->back();
+    }
+
+    public function getTimKiem(Request $req){
+        $product = Product::where('name','like','%'.$req->key.'%')
+                                    ->orWhere('unit_price',$req->key)
+                                    ->get();
+        return view ('page.timkiem',compact('product'));
     }
 }

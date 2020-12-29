@@ -29,14 +29,28 @@ Route::get('trang-chu', [
     'uses'=>'App\Http\Controllers\PageController@getIndex'
 ]);
 
-Route::get('dang-ky-dang-nhap', [
-    'as'=>'dangkydangnhap',
-    'uses'=>'App\Http\Controllers\PageController@getDangKyDangNhap'
+Route::get('dang-nhap', [
+    'as'=>'dangnhap',
+    'uses'=>'App\Http\Controllers\PageController@getDangNhap'
+]);
+Route::post('dang-nhap', [
+    'as'=>'dangnhap',
+    'uses'=>'App\Http\Controllers\PageController@postDangNhap'
 ]);
 
-Route::post('dang-ky-dang-nhap', [
-    'as'=>'dangkydangnhap',
-    'uses'=>'App\Http\Controllers\PageController@postDangKyDangNhap'
+Route::get('dang-ky', [
+    'as'=>'dangky',
+    'uses'=>'App\Http\Controllers\PageController@getDangKy'
+]);
+
+Route::post('dang-ky', [
+    'as'=>'dangky',
+    'uses'=>'App\Http\Controllers\PageController@postDangKy'
+]);
+
+Route::get('dang-xuat', [
+    'as'=>'dangxuat',
+    'uses'=>'App\Http\Controllers\PageController@postDangXuat'
 ]);
 
 Route::get('loai-san-pham/{type}', [
@@ -102,6 +116,11 @@ Route::get('dat-hang', [
 Route::post('dat-hang', [
     'as'=>'dathang',
     'uses'=>'App\Http\Controllers\PageController@postCheckout'
+]);
+
+Route::get('tim-kiem', [
+    'as'=>'timkiem',
+    'uses'=>'App\Http\Controllers\PageController@getTimKiem'
 ]);
 
 // Route::get('index','PageController@getIndex');

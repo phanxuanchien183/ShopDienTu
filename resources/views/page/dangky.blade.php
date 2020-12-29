@@ -5,7 +5,7 @@
         <div class="breadcrumb-content">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li class="active">Login Register</li>
+                <li class="active">Register</li>
             </ul>
         </div>
     </div>
@@ -15,9 +15,9 @@
 <div class="page-section mb-60">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
-                <!-- Login Form s-->
-                <form action="{{route('dangkydangnhap')}}" method="POST">
+            {{-- <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
+                
+                <form action="" >
                     <div class="login-form">
                         <h4 class="login-title">Login</h4>
                         <div class="row">
@@ -44,9 +44,9 @@
                         </div>
                     </div>
                 </form>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-                <form action="{{route('dangkydangnhap')}}" method="POST">
+            </div> --}}
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                <form action="{{route('dangky')}}" method="POST">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="login-form">
                         <h4 class="login-title">Register</h4>

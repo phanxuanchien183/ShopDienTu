@@ -38,7 +38,7 @@
                                         <!-- shop-item-filter-list end -->
                                     </div>
                                     <div class="toolbar-amount">
-                                        <span>Tìm thấy {{count($sp_theoloai)}} sản phẩm</span>
+                                        <span>Showing {{count($sp_theoloai)}} items</span>
                                     </div>
                                 </div>
                                 <!-- product-select-box start -->
@@ -593,7 +593,7 @@
                                                                         </ul>
                                                                     </div>
                                                                 </div>
-                                                                <h4><a class="product_name" href="single-product.html">{{$sp->name}}</a></h4>
+                                                                <h4><a class="product_name" href="{{route('chitietsanpham',$sp->id)}}">{{$sp->name}}</a></h4>
                                                                 <div class="price-box">
                                                                     <span class="new-price">${{$sp->promotion_price}}</span>
                                                                 </div>
@@ -624,7 +624,7 @@
                                                 {{-- <p>Tìm thấy {{count($sp_theoloai)}} sản phẩm</p>
                                             </div> --}}
                                             <div class="col-lg-12 col-md-12">
-                                                {{-- <ul class="pagination-box ">
+                                                <ul class="pagination-box ">
                                                     <li><a href="#" class="Previous"><i class="fa fa-chevron-left"></i> Previous</a>
                                                     </li>
                                                     <li class="active"><a href="#">1</a></li>
@@ -634,8 +634,8 @@
                                                       <a href="#" class="Next"> Next <i class="fa fa-chevron-right"></i></a>
                                                     </li>
                                                    
-                                                </ul> --}}
-                                                 <div class="row">{!! $sp_theoloai->render() !!}</div>
+                                                </ul>
+                                                 {{-- <div >{!! $sp_theoloai->render() !!}</div> --}}
                                             </div>
                                         </div>
                                     </div>
