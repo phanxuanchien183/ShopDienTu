@@ -132,3 +132,18 @@ Route::get('tim-kiem', [
 
 // Route::get('index','PageController@getIndex');
 
+//Route Admin
+
+Route::get('dang-nhap-admin', [
+    'as'=>'dangnhapadmin',
+    'uses'=>'App\Http\Controllers\PageAdminController@getDangNhap'
+]);
+Route::post('dang-nhap-admin', [
+    'as'=>'dangnhapadmin',
+    'uses'=>'App\Http\Controllers\PageAdminController@postDangNhap'
+]);
+
+Route::get('trang-chu-admin', [
+    'as'=>'trangchuadmin',
+    'uses'=>'App\Http\Controllers\PageAdminController@getIndex'
+]);
