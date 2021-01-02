@@ -14,10 +14,10 @@
                                         <div class="slider-progress"></div>
                                         <div class="slider-content">
                                             <h5>Sale Offer <span>-20% Off</span> This Week</h5>
-                                            <h2>Chamcham Galaxy S9 | S9+</h2>
+                                            <h2>Chamcham Galaxy S9</h2>
                                             <h3>Starting at <span>$1209.00</span></h3>
                                             <div class="default-btn slide-btn">
-                                                <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
+                                                <a class="links" href="{{route('chitietsanpham',50)}}">Shopping Now</a>
                                             </div>
                                         </div>
                                     </div>
@@ -30,7 +30,7 @@
                                             <h2>Work Desk Surface Studio 2018</h2>
                                             <h3>Starting at <span>$824.00</span></h3>
                                             <div class="default-btn slide-btn">
-                                                <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
+                                                <a class="links" href="{{route('chitietsanpham',48)}}">Shopping Now</a>
                                             </div>
                                         </div>
                                     </div>
@@ -43,7 +43,7 @@
                                             <h2>Phantom 4 Pro+ Obsidian</h2>
                                             <h3>Starting at <span>$1849.00</span></h3>
                                             <div class="default-btn slide-btn">
-                                                <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
+                                                <a class="links" href="{{route('chitietsanpham',49)}}">Shopping Now</a>
                                             </div>
                                         </div>
                                     </div>
@@ -127,7 +127,8 @@
                                                         <ul class="add-actions-link">
                                                             <li class="add-cart active"><a href="{{route('themgiohang',$sp->id)}}">Add to cart</a></li>
                                                             <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
-                                                            <li><a href="{{route('modalchitietsanpham',$sp->id)}}" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                                            {{-- <li><a href="{{route('chitietsanphampopup',$sp->id)}}" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li> --}}
+                                                            <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -169,7 +170,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <h4><a class="product_name" href="single-product.html">{{$bestproduct->name}}</a></h4>
+                                                <h4><a class="product_name" href="{{route('chitietsanpham',$bestproduct->id)}}">{{$bestproduct->name}}</a></h4>
                                                 <div class="price-box">
                                                     <span class="new-price">${{$bestproduct->promotion_price}}</span>
                                                 </div>
@@ -220,7 +221,7 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <h4><a class="product_name" href="single-product.html">{{$sell->name}}</a></h4>
+                                                    <h4><a class="product_name" href="{{route('chitietsanpham',$sell->id)}}">{{$sell->name}}</a></h4>
                                                     <div class="price-box">
                                                         <span class="new-price">${{$sell->promotion_price}}</span>
                                                     </div>
@@ -325,7 +326,7 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <h4><a class="product_name" href="single-product.html">{{$lt->name}}</a></h4>
+                                                    <h4><a class="product_name" href="{{route('chitietsanpham',$lt->id)}}">{{$lt->name}}</a></h4>
                                                     <div class="price-box">
                                                         <span class="new-price">${{$lt->promotion_price}}</span>
                                                     </div>
@@ -396,7 +397,7 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <h4><a class="product_name" href="single-product.html">{{$tv->name}}</a></h4>
+                                                    <h4><a class="product_name" href="{{route('chitietsanpham',$tv->id)}}">{{$tv->name}}</a></h4>
                                                     <div class="price-box">
                                                         <span class="new-price">${{$tv->promotion_price}}</span>
                                                     </div>
@@ -1315,4 +1316,118 @@
                     </div>
                 </div>
             </section>
+            {{-- <div class="modal fade modal-wrapper" id="editModal" >
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <form action="{{ action('/employee')}}" method="POST" id="editform">
+                            {{csrf_field()}}
+                            {{method_field('PUT')}}
+                            <div class="modal-body">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="modal-inner-area row">
+                                    <div class="col-lg-5 col-md-6 col-sm-6">
+                                    <!-- Product Details Left -->
+                                        <div class="product-details-left">
+                                            <div class="product-details-images slider-navigation-1">
+                                                <div class="lg-image">
+                                                    <img src="uiStore/images/product/large-size/1.jpg" alt="product image">
+                                                </div>
+                                                <div class="lg-image">
+                                                    <img src="uiStore/images/product/large-size/2.jpg" alt="product image">
+                                                </div>
+                                                <div class="lg-image">
+                                                    <img src="uiStore/images/product/large-size/3.jpg" alt="product image">
+                                                </div>
+                                                <div class="lg-image">
+                                                    <img src="uiStore/images/product/large-size/4.jpg" alt="product image">
+                                                </div>
+                                                <div class="lg-image">
+                                                    <img src="uiStore/images/product/large-size/5.jpg" alt="product image">
+                                                </div>
+                                                <div class="lg-image">
+                                                    <img src="uiStore/images/product/large-size/6.jpg" alt="product image">
+                                                </div>
+                                            </div>
+                                            <div class="product-details-thumbs slider-thumbs-1">                                        
+                                                <div class="sm-image"><img src="uiStore/images/product/small-size/1.jpg" alt="product image thumb"></div>
+                                                <div class="sm-image"><img src="uiStore/images/product/small-size/2.jpg" alt="product image thumb"></div>
+                                                <div class="sm-image"><img src="uiStore/images/product/small-size/3.jpg" alt="product image thumb"></div>
+                                                <div class="sm-image"><img src="uiStore/images/product/small-size/4.jpg" alt="product image thumb"></div>
+                                                <div class="sm-image"><img src="uiStore/images/product/small-size/5.jpg" alt="product image thumb"></div>
+                                                <div class="sm-image"><img src="uiStore/images/product/small-size/6.jpg" alt="product image thumb"></div>
+                                            </div>
+                                        </div>
+                                        <!--// Product Details Left -->
+                                    </div>
+
+                                    <div class="col-lg-7 col-md-6 col-sm-6">
+                                        <div class="product-details-view-content pt-60">
+                                            <div class="product-info">
+                                                <h2>{{$sanpham->name}}</h2>
+                                                <span class="product-details-ref">Reference: demo_15</span>
+                                                <div class="rating-box pt-20">
+                                                    <ul class="rating rating-with-review-item">
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                        <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                        <li class="review-item"><a href="#">Read Review</a></li>
+                                                        <li class="review-item"><a href="#">Write Review</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="price-box pt-20">
+                                                    <span class="new-price new-price-2">$57.98</span>
+                                                </div>
+                                                <div class="product-desc">
+                                                    <p>
+                                                        <span>100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                                <div class="product-variants">
+                                                    <div class="produt-variants-size">
+                                                        <label>Dimension</label>
+                                                        <select class="nice-select">
+                                                            <option value="1" title="S" selected="selected">40x60cm</option>
+                                                            <option value="2" title="M">60x90cm</option>
+                                                            <option value="3" title="L">80x120cm</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="single-add-to-cart">
+                                                    <form action="#" class="cart-quantity">
+                                                        <div class="quantity">
+                                                            <label>Quantity</label>
+                                                            <div class="cart-plus-minus">
+                                                                <input class="cart-plus-minus-box" value="1" type="text">
+                                                                <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                                                                <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                                            </div>
+                                                        </div>
+                                                        <button class="add-to-cart" type="submit">Add to cart</button>
+                                                    </form>
+                                                </div>
+                                                <div class="product-additional-info pt-25">
+                                                    <a class="wishlist-btn" href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a>
+                                                    <div class="product-social-sharing pt-25">
+                                                        <ul>
+                                                            <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
+                                                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
+                                                            <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i>Google +</a></li>
+                                                            <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>  --}}
 @endsection

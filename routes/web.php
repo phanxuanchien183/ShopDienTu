@@ -63,6 +63,13 @@ Route::get('chi-tiet-san-pham/{id}', [
     'uses'=>'App\Http\Controllers\PageController@getChiTietSp'
 ]);
 
+// Route::get('chi-tiet-san-pham-popup/{id}', [
+//     'as'=>'chitietsanphampopup',
+//     'uses'=>'App\Http\Controllers\PageController@getChiTietSpPopup'
+// ]);
+
+// Route::resource('/employee','EmployeeController');
+
 Route::get('modal-chi-tiet-san-pham/{id}', [
     'as'=>'modalchitietsanpham',
     'uses'=>'App\Http\Controllers\PageController@getModalChiTietSp'

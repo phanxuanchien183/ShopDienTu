@@ -39,6 +39,11 @@ class PageController extends Controller
         return view('page.chitiet_sanpham',compact('sanpham'));
     }
 
+    public function getChiTietSpPopup(Request $reg){
+        $sanpham=Product::where('id',$reg->id)->first();
+        return view('page.trangchu',compact('sanpham'));
+    }
+
     public function getModalChiTietSp(Request $reg){
         $sanpham=Product::where('id',$reg->id)->first();
         return view(redirect()->back(),compact('sanpham'));
