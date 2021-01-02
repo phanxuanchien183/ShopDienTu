@@ -80,7 +80,7 @@
                                         </div>
                                     </div> --}}
                                     <div class="single-add-to-cart">
-                                        <form action="#" class="cart-quantity">
+                                        {{-- <form action="{{route('chitietsanpham',$sanpham->id)}}" class="cart-quantity">
                                             <div class="quantity">
                                                 <label>Quantity</label>
                                                 <div class="cart-plus-minus">
@@ -89,8 +89,15 @@
                                                     <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                 </div>
                                             </div>
-                                            <button class="add-to-cart" type="submit">Add to cart</button>
-                                        </form>
+                                            <button class="add-to-cart" type="submit" >Add to cart</button>
+                                        </form> --}}
+                                        <ul class="add-actions-link">
+                                            <li class="add-cart active"><a class="btn-warning" href="{{route('themgiohang',$sanpham->id)}}">Add to cart</a></li>
+                                            
+                                            {{-- <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li> --}}
+                                            {{-- <li><a href="{{route('chitietsanphampopup',$sp->id)}}" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li> --}}
+                                            {{-- <li><a href="#" title="quick view" data-name="{{$sp}}" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li> --}}
+                                        </ul>
                                     </div>
                                     <div class="product-additional-info pt-25">
                                         <a class="wishlist-btn" href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a>

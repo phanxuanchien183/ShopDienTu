@@ -80,9 +80,9 @@
                         <div class="col-lg-12">
                             <div class="li-product-tab">
                                 <ul class="nav li-product-menu">
-                                   <li><a class="active" data-toggle="tab" href="#li-new-product"><span>Sản phẩm mới</span></a></li>
-                                   <li><a data-toggle="tab" href="#li-bestseller-product"><span>Bán chạy</span></a></li>
-                                   <li><a data-toggle="tab" href="#li-featured-product"><span>Giảm giá</span></a></li>
+                                   <li><a class="active" data-toggle="tab" href="#li-new-product"><span>Product New</span></a></li>
+                                   <li><a data-toggle="tab" href="#li-bestseller-product"><span>Product Selling</span></a></li>
+                                   <li><a data-toggle="tab" href="#li-featured-product"><span>Product Discount</span></a></li>
                                 </ul>               
                             </div>
                             <!-- Begin Li's Tab Menu Content Area -->
@@ -120,7 +120,7 @@
                                                         </div>
                                                         <h4><a class="product_name" href="{{route('chitietsanpham',$sp->id)}}">{{$sp->name}}</a></h4>
                                                         <div class="price-box">
-                                                            <span class="new-price">${{$sp->promotion_price}}</span>
+                                                            <span class="new-price">${{$sp->unit_price}}</span>
                                                         </div>
                                                     </div>
                                                     <div class="add-actions">
@@ -136,10 +136,20 @@
                                             <!-- single-product-wrap end -->
                                         </div>
                                     @endforeach
+                                    {{-- js insert data in modal product new --}}
                                     <script>
                                         $(document).on('ready',function(){
                                             $(".quick-view-btn").on('click',function(){
-                                                $("#sp-chien-name").text($(this).data('name')->name);
+                                                var id = $(this).data('name').id;
+                                                // alert(id);
+                                                // var id=2;
+                                                $("#product-name").text($(this).data('name').name);
+                                                $("#product-price").text($(this).data('name').unit_price);
+                                                $("#product-description").text($(this).data('name').description);
+                                                // $("#product-image").text($(this).data('name').image);
+                                                $('img#product-image').attr('src', 'uiStore/images/product/smallsize/'+($(this).data('name').image));
+                                                $("#product-add-to-cart").attr("href", 'add-to-cart/'+id);
+                                               
                                             })
                                         })
                                     </script>

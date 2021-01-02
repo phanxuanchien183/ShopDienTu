@@ -70,9 +70,9 @@
                                     <div class="product-details-left">
                                         <div class="product-details-images slider-navigation-1">
                                             <div class="lg-image">
-                                                <img src="uiStore/images/product/large-size/1.jpg" alt="product image">
+                                                <img src="uiStore/images/product/large-size/1.jpg" id="product-image" alt="product image">
                                             </div>
-                                            <div class="lg-image">
+                                            {{-- <div class="lg-image">
                                                 <img src="uiStore/images/product/large-size/2.jpg" alt="product image">
                                             </div>
                                             <div class="lg-image">
@@ -86,15 +86,15 @@
                                             </div>
                                             <div class="lg-image">
                                                 <img src="uiStore/images/product/large-size/6.jpg" alt="product image">
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="product-details-thumbs slider-thumbs-1">                                        
-                                            <div class="sm-image"><img src="uiStore/images/product/small-size/1.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="uiStore/images/product/small-size/2.jpg" alt="product image thumb"></div>
+                                            <div class="sm-image"><img src="uiStore/images/product/small-size/1.jpg" id="product-image" alt="product image thumb"></div>
+                                            {{-- <div class="sm-image"><img src="uiStore/images/product/small-size/2.jpg" alt="product image thumb"></div>
                                             <div class="sm-image"><img src="uiStore/images/product/small-size/3.jpg" alt="product image thumb"></div>
                                             <div class="sm-image"><img src="uiStore/images/product/small-size/4.jpg" alt="product image thumb"></div>
                                             <div class="sm-image"><img src="uiStore/images/product/small-size/5.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="uiStore/images/product/small-size/6.jpg" alt="product image thumb"></div>
+                                            <div class="sm-image"><img src="uiStore/images/product/small-size/6.jpg" alt="product image thumb"></div> --}}
                                         </div>
                                     </div>
                                     <!--// Product Details Left -->
@@ -103,8 +103,8 @@
                                 <div class="col-lg-7 col-md-6 col-sm-6">
                                     <div class="product-details-view-content pt-60">
                                         <div class="product-info">
-                                            <h2 id="sp-chien-name">Today is a good day Framed poster</h2>
-                                            <span class="product-details-ref">Reference: demo_15</span>
+                                            <h2 id="product-name">Product Name</h2>
+                                            {{-- <span class="product-details-ref">Reference: demo_15</span> --}}
                                             <div class="rating-box pt-20">
                                                 <ul class="rating rating-with-review-item">
                                                     <li><i class="fa fa-star-o"></i></li>
@@ -117,15 +117,14 @@
                                                 </ul>
                                             </div>
                                             <div class="price-box pt-20">
-                                                <span class="new-price new-price-2">$57.98</span>
+                                                <span class="new-price new-price-2" >$<span id="product-price">Price</span></span>
                                             </div>
                                             <div class="product-desc">
                                                 <p>
-                                                    <span>100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
-                                                    </span>
+                                                    <span id="product-description">Discription</span>
                                                 </p>
                                             </div>
-                                            <div class="product-variants">
+                                            {{-- <div class="product-variants">
                                                 <div class="produt-variants-size">
                                                     <label>Dimension</label>
                                                     <select class="nice-select">
@@ -134,9 +133,9 @@
                                                         <option value="3" title="L">80x120cm</option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="single-add-to-cart">
-                                                <form action="#" class="cart-quantity">
+                                                {{-- <form action="#" class="cart-quantity">
                                                     <div class="quantity">
                                                         <label>Quantity</label>
                                                         <div class="cart-plus-minus">
@@ -145,8 +144,16 @@
                                                             <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                         </div>
                                                     </div>
-                                                    <button class="add-to-cart" type="submit">Add to cart</button>
-                                                </form>
+                                                    <button class="add-to-cart" id="product-add-to-cart" type="submit">Add to cart</button>
+                                                    <li class="add-to-cart"><a href="{{route('themgiohang',$sp->id)}}">Add to cart</a></li>
+                                                </form> --}}
+                                                <ul class="add-actions-link">
+                                                    <li class="add-cart active"><a type="button" class="btn-warning" id="product-add-to-cart">Add to cart</a></li>
+                                                    
+                                                    {{-- <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li> --}}
+                                                    {{-- <li><a href="{{route('chitietsanphampopup',$sp->id)}}" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li> --}}
+                                                    {{-- <li><a href="#" title="quick view" data-name="{{$sp}}" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li> --}}
+                                                </ul>
                                             </div>
                                             <div class="product-additional-info pt-25">
                                                 <a class="wishlist-btn" href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a>
