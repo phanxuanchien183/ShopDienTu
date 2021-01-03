@@ -152,3 +152,8 @@ Route::get('customer-admin', [
     'as'=>'customeradmin',
     'uses'=>'App\Http\Controllers\PageAdminController@getCustomer'
 ]);
+
+Route::get('user-admin', [
+    'as'=>'useradmin',
+    'uses'=>'App\Http\Controllers\PageAdminController@getUser'
+]);

@@ -18,15 +18,28 @@
                                     <ul class="ht-menu">
                                         <!-- Begin Setting Area -->
                                         <li>
-                                            @if (Auth::user()->role==null)
-                                                <div class="ht-setting-trigger"><span>Hi {{Auth::user()->full_name}}</span></div>
-                                                <div class="setting ht-setting">
-                                                    <ul class="ht-setting-list">
-                                                        {{-- <li><a href="login-register.html">My Account</a></li> --}}
-                                                        <li><a href="{{route('dangxuat')}}">Log out</a></li>
-                                                        {{-- <li><a href="{{route('dangky')}}">Register</a></li> --}}
-                                                    </ul>
-                                                </div>
+                                            {{-- @if (Auth::user()->role==null) --}}
+                                            @if (Auth::check())
+                                                @if (Auth::user()->role==null)
+                                                    <div class="ht-setting-trigger"><span>Hi {{Auth::user()->full_name}}</span></div>
+                                                    <div class="setting ht-setting">
+                                                        <ul class="ht-setting-list">
+                                                            {{-- <li><a href="login-register.html">My Account</a></li> --}}
+                                                            <li><a href="{{route('dangxuat')}}">Log out</a></li>
+                                                            {{-- <li><a href="{{route('dangky')}}">Register</a></li> --}}
+                                                        </ul>
+                                                    </div>
+                                                
+                                                @else 
+                                                    <div class="ht-setting-trigger"><span>Account</span></div>
+                                                    <div class="setting ht-setting">
+                                                        <ul class="ht-setting-list">
+                                                            {{-- <li><a href="login-register.html">My Account</a></li> --}}
+                                                            <li><a href="{{route('dangnhap')}}">Login</a></li>
+                                                            <li><a href="{{route('dangky')}}">Register</a></li>
+                                                        </ul>
+                                                    </div>
+                                                @endif
                                             @else
                                                 <div class="ht-setting-trigger"><span>Account</span></div>
                                                 <div class="setting ht-setting">
