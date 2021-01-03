@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\UserAdmin;
 use Session;
@@ -11,8 +13,27 @@ use Illuminate\Support\Facades\Auth;
 class PageAdminController extends Controller
 {
     public function getIndex(){
+        if (Auth::check()){
+            $product= Product::all();
+            return view('pageadmin.trangchuadmin',compact('product'));
+            // return view('pageadmin.trangchuadmin');
+        }
+        else{
+            return redirect()->route('dangnhapadmin')->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
+        }
         
-        return view('pageadmin.trangchuadmin');
+    }
+
+    public function getCustomer(){
+        if (Auth::check()){
+            $customer= Customer::all();
+            return view('pageadmin.customer',compact('customer'));
+            // return view('pageadmin.trangchuadmin');
+        }
+        else{
+            return redirect()->route('dangnhapadmin')->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
+        }
+        
     }
 
     public function getDangNhap(){
@@ -34,7 +55,8 @@ class PageAdminController extends Controller
             ]
             );
             $credentials = array('email'=>$req->email,
-                                'password'=>$req->password);
+                                'password'=>$req->password,
+                                'role'=>1);
             if(Auth::attempt($credentials)){
                 return redirect()->route('trangchuadmin')->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
             }

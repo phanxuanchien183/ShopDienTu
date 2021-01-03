@@ -18,12 +18,12 @@
                                     <ul class="ht-menu">
                                         <!-- Begin Setting Area -->
                                         <li>
-                                            @if (Auth::check())
-                                                <div class="ht-setting-trigger"><span>Xin chào {{Auth::user()->full_name}}</span></div>
+                                            @if (Auth::user()->role==null)
+                                                <div class="ht-setting-trigger"><span>Hi {{Auth::user()->full_name}}</span></div>
                                                 <div class="setting ht-setting">
                                                     <ul class="ht-setting-list">
                                                         {{-- <li><a href="login-register.html">My Account</a></li> --}}
-                                                        <li><a href="{{route('dangxuat')}}">Đăng xuất</a></li>
+                                                        <li><a href="{{route('dangxuat')}}">Log out</a></li>
                                                         {{-- <li><a href="{{route('dangky')}}">Register</a></li> --}}
                                                     </ul>
                                                 </div>
@@ -236,7 +236,7 @@
                                 <div class="hb-menu">
                                     <nav>
                                         <ul>
-                                            <li class="dropdown-holder"><a href="{{route('trangchu')}}">Trang chủ</a>
+                                            <li class="dropdown-holder"><a href="{{route('trangchu')}}">Home</a>
                                                 {{-- <ul class="hb-dropdown">
                                                     <li class="active"><a href="index.html">Home One</a></li>
                                                     <li><a href="index-2.html">Home Two</a></li>
@@ -244,7 +244,7 @@
                                                     <li><a href="index-4.html">Home Four</a></li>
                                                 </ul> --}}
                                             </li>
-                                            <li class="dropdown-holder"><a >Loại sản phẩm</a>
+                                            <li class="dropdown-holder"><a >Product type</a>
                                                 <ul class="hb-dropdown">
                                                     {{-- <li class="active"><a href="index.html">Home One</a></li> --}}
                                                     @foreach ($loai_sp as $loai)
@@ -256,7 +256,7 @@
                                                 </ul>
                                             </li>
                                             
-                                            <li class="megamenu-holder"><a href="shop-left-sidebar.html">Shop</a>
+                                            {{-- <li class="megamenu-holder"><a href="shop-left-sidebar.html">Shop</a>
                                                 <ul class="megamenu hb-megamenu">
                                                     <li><a href="shop-left-sidebar.html">Shop Page Layout</a>
                                                         <ul>
@@ -289,8 +289,8 @@
                                                         </ul>
                                                     </li>
                                                 </ul>
-                                            </li>
-                                            <li class="dropdown-holder"><a href="blog-left-sidebar.html">Blog</a>
+                                            </li> --}}
+                                            {{-- <li class="dropdown-holder"><a href="blog-left-sidebar.html">Blog</a>
                                                 <ul class="hb-dropdown">
                                                     <li class="sub-dropdown-holder"><a href="blog-left-sidebar.html">Blog Grid View</a>
                                                         <ul class="hb-dropdown hb-sub-dropdown">
@@ -321,8 +321,8 @@
                                                         </ul>
                                                     </li>
                                                 </ul>
-                                            </li>
-                                            <li class="megamenu-static-holder"><a href="index.html">Pages</a>
+                                            </li> --}}
+                                            {{-- <li class="megamenu-static-holder"><a href="index.html">Pages</a>
                                                 <ul class="megamenu hb-megamenu">
                                                     <li><a href="blog-left-sidebar.html">Blog Layouts</a>
                                                         <ul>
@@ -362,11 +362,14 @@
                                                         </ul>
                                                     </li>
                                                 </ul>
-                                            </li>
-                                            <li><a href="about-us.html">About Us</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="shop-left-sidebar.html">Smartwatch</a></li>
-                                            <li><a href="shop-left-sidebar.html">Accessories</a></li>
+                                            </li> --}}
+                                            <li style="display: none"><a href="about-us.html">About Us</a></li>
+                                            <li style="display: none"><a href="{{ route('lienhe') }}">Contact</a></li>
+                                            {{-- <li><a href="shop-left-sidebar.html">Smartwatch</a></li> --}}
+                                            <li><a href="{{ route('gioithieu') }}">About Us</a></li>
+                                            <li><a href="{{ route('lienhe') }}">Contact</a></li>
+                                            <li><a href="{{ route('faq') }}">FAQ</a></li>
+                                            
                                         </ul>
                                     </nav>
                                 </div>

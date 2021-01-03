@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Products</h1>
+            <h1 class="m-0">Customers</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Products</li>
+              <li class="breadcrumb-item active">Customers</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -44,26 +44,28 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Product Name</th>
-                  <th style="max-width:400px;overflow:hidden">Description</th>
-                  <th>Unit Price</th>
-                  <th>Image link</th>
-                  <th>New</th>
+                  <th>Name</th>
+                  <th >Gender</th>
+                  <th>Email</th>
+                  <th>Adress</th>
+                  <th>Phone number</th>
+                  <th>Note</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                @foreach ($product as $p)
+                @foreach ($customer as $c)
                   <tr>
-                    <td>{{$p->id}}</td>
-                    <td>{{$p->name}}</td>
-                    <td style="max-width:400px;overflow:hidden">{{$p->description}}</td>
-                    <td>{{$p->unit_price}}</td>
-                    <td>{{$p->image}}</td>
-                    <td>{{$p->new}}</td>
+                    <td>{{$c->id}}</td>
+                    <td>{{$c->name}}</td>
+                    <td >{{$c->gender}}</td>
+                    <td>{{$c->email}}</td>
+                    <td>{{$c->address}}</td>
+                    <td>{{$c->phone_number}}</td>
+                    <td>{{$c->note}}</td>
                     <td>
-                      <button href="#" type="button" data-product="{{$p}}" onclick="myFunction()" id="editModal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                      {{-- <button href="#" title="quick view" data-name="{{$p}}" class="quick-view-btn" data-toggle="modal" data-target="#exampleModal"> --}}
+                      <button href="#" type="button" data-customer="{{$c}}" onclick="myFunction()" id="editModal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                      {{-- <button href="#" title="quick view" data-name="{{$c}}" class="quick-view-btn" data-toggle="modal" data-target="#exampleModal"> --}}
                         Edit
                       </button>                      
                       /
@@ -85,16 +87,15 @@
                 //   }
                   
                   $("button#editModal").on('click',function(evt){
-                      console.log($(this).data('product')); 
-                      $("#idEditProductName").val($(this).data('product').id);
-                      $("#productname").val($(this).data('product').name);
-                      $("#idtype").val($(this).data('product').id_type);
-                      $("#description").val($(this).data('product').description);
-                      $("#unitprice").val($(this).data('product').unit_price);
-                      $("#promotionprice").val($(this).data('product').promotion_price);
-                      $("#image").val($(this).data('product').image);
-                      $("#unit").val($(this).data('product').unit);
-                      $("#new").val($(this).data('product').new);
+                      console.log($(this).data('customer')); 
+                      $("#idEditCustomerName").val($(this).data('customer').id);
+                      $("#customername").val($(this).data('customer').name);
+                      $("#gender").val($(this).data('customer').gender);
+                      $("#email").val($(this).data('customer').email);
+                      $("#address").val($(this).data('customer').address);
+                      $("#phone_number").val($(this).data('customer').phone_number);
+                      $("#note").val($(this).data('customer').note);
+                      
                   });
                 </script>
                 
@@ -122,33 +123,33 @@
         <div class="card-body">
           <div class="form-group">
             <label for="exampleInputEmail1">Id</label>
-            <input type="id" id="idEditProductName" class="form-control"  placeholder="Id">
+            <input type="id" id="idEditCustomerName" class="form-control"  placeholder="Id">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product Name</label>
-            <input type="productname" id="productname" class="form-control"  placeholder="Product Name">
+            <label for="exampleInputEmail1">Customer Name</label>
+            <input type="customername" id="customername" class="form-control"  placeholder="Product Name">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Id Type</label>
-            <input type="idtype" id="idtype" class="form-control"  placeholder="Id Type">
+            <label for="exampleInputEmail1">Gender</label>
+            <input type="gender" id="gender" class="form-control"  placeholder="Id Type">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Description</label>
-            <input type="description" id="description" class="form-control"  placeholder="Description">
+            <label for="exampleInputEmail1">Email</label>
+            <input type="email" id="email" class="form-control"  placeholder="Description">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Unit Price</label>
-            <input type="unitprice" id="unitprice" class="form-control"  placeholder="Unit Price">
+            <label for="exampleInputEmail1">Adress</label>
+            <input type="address" id="address" class="form-control"  placeholder="Unit Price">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Promotion Price</label>
-            <input type="promotionprice" id="promotionprice" class="form-control"  placeholder="Promotion Price">
+            <label for="exampleInputEmail1">Phone Number</label>
+            <input type="phone_number" id="phone_number" class="form-control"  placeholder="Promotion Price">
           </div>
           {{-- <div class="form-group">
             <label for="exampleInputEmail1">Image</label>
             <input type="image" id="image" class="form-control"  placeholder="Image">
           </div> --}}
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="exampleInputFile">File image</label>
             <div class="input-group">
               <div class="custom-file">
@@ -160,15 +161,15 @@
                 <span class="input-group-text">Upload</span>
               </div>
             </div>
-          </div>
+          </div> --}}
           <div class="form-group">
-            <label for="exampleInputEmail1">Unit</label>
-            <input type="unit" id="unit" class="form-control"  placeholder="Unit">
+            <label for="exampleInputEmail1">Note</label>
+            <input type="note" id="note" class="form-control"  placeholder="Unit">
           </div>
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="exampleInputEmail1">New</label>
             <input type="new" id="new" class="form-control"  placeholder="New">
-          </div>
+          </div> --}}
           {{-- <div class="form-group">
             <label>Id Type</label>
               <select id="idtype" class="form-control">

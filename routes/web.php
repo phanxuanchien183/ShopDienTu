@@ -147,3 +147,8 @@ Route::get('trang-chu-admin', [
     'as'=>'trangchuadmin',
     'uses'=>'App\Http\Controllers\PageAdminController@getIndex'
 ]);
+
+Route::get('customer-admin', [
+    'as'=>'customeradmin',
+    'uses'=>'App\Http\Controllers\PageAdminController@getCustomer'
+]);

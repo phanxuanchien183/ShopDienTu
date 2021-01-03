@@ -29,11 +29,11 @@
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
+          <i class="fas fa-user-cog"></i>
+          {{-- <span class="badge badge-danger navbar-badge">3</span> --}}
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
+          {{-- <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
               <img src="uiAdmin/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
@@ -79,9 +79,9 @@
               </div>
             </div>
             <!-- Message End -->
-          </a>
+          </a> --}}
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+          <a href="{{route('dangxuat')}}" class="dropdown-item dropdown-footer">Log out</a>
         </div>
       </li>
       <!-- Notifications Dropdown Menu -->

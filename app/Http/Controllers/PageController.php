@@ -150,7 +150,8 @@ class PageController extends Controller
             ]
             );
             $credentials = array('email'=>$req->email,
-                                'password'=>$req->password);
+                                'password'=>$req->password,
+                                'role'=>null);
             if(Auth::attempt($credentials)){
                 return redirect()->route('trangchu')->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
             }
@@ -159,37 +160,37 @@ class PageController extends Controller
             }
     }
 
-    // public function getDangKy(){
-    //     return view('page.dangky');
-    // }
+    public function getDangKy(){
+        return view('page.dangky');
+    }
 
-    // public function postDangKy(Request $req){
-    //     $this->validate($req,
-    //         [
-    //             'email'=>'required|email|unique:users,email',
-    //             'password'=>'required|min:6|max:20',
-    //             'fullname'=>'required',
-    //             're_password'=>'required|same:password'
-    //         ],
-    //         [
-    //             'email.requied'=>'Please enter your email',
-    //             'email.email'=>'Email format is not correct',
-    //             'email.unique'=>'Email already exists',
-    //             'password.requied'=>'Please enter a password',
-    //             're_password.same'=>'password is not the same',
-    //             'password.min'=>'password at least 6 characters',
-    //             'password.max'=>'password must not exceed 20 characters'
-    //         ],
-    //     );
-    //     $user= new User();
-    //     $user->full_name =$req-> fullname;
-    //     $user->email = $req->email;
-    //     $user->password = Hash::make($req->password);
-    //     $user->phone = $req->phone;
-    //     $user->address = $req->adress;
-    //     $user->save();
-    //     return redirect()->back()->with('thanhcong','Create Account Success');
-    // }
+    public function postDangKy(Request $req){
+        $this->validate($req,
+            [
+                'email'=>'required|email|unique:users,email',
+                'password'=>'required|min:6|max:20',
+                'fullname'=>'required',
+                're_password'=>'required|same:password'
+            ],
+            [
+                'email.requied'=>'Please enter your email',
+                'email.email'=>'Email format is not correct',
+                'email.unique'=>'Email already exists',
+                'password.requied'=>'Please enter a password',
+                're_password.same'=>'password is not the same',
+                'password.min'=>'password at least 6 characters',
+                'password.max'=>'password must not exceed 20 characters'
+            ],
+        );
+        $user= new User();
+        $user->full_name =$req-> fullname;
+        $user->email = $req->email;
+        $user->password = Hash::make($req->password);
+        $user->phone = $req->phone;
+        $user->address = $req->adress;
+        $user->save();
+        return redirect()->back()->with('thanhcong','Create Account Success');
+    }
 
     public function postDangXuat(){
         Auth::logout();
