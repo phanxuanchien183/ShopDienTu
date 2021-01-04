@@ -67,9 +67,9 @@
                         Edit
                       </button>                      
                       /
-                      <button type="button" class="btn btn-danger" >
+                      <a type="button" href="{{route('delproduct',$p->id)}}" class="btn btn-danger" >
                         Delete
-                      </button> 
+                      </a> 
                     </td>
                   </tr>
                 @endforeach

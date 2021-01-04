@@ -157,3 +157,18 @@ Route::get('user-admin', [
     'as'=>'useradmin',
     'uses'=>'App\Http\Controllers\PageAdminController@getUser'
 ]);
+
+Route::get('del-product/{id}', [
+    'as'=>'delproduct',
+    'uses'=>'App\Http\Controllers\PageAdminController@getDeleteProduct'
+]);
+
+Route::get('del-customer/{id}', [
+    'as'=>'delcustomer',
+    'uses'=>'App\Http\Controllers\PageAdminController@getDeleteCustomer'
+]);
+
+Route::get('del-user/{id}', [
+    'as'=>'deluser',
+    'uses'=>'App\Http\Controllers\PageAdminController@getDeleteUser'
+]);

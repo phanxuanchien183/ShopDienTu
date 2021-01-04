@@ -24,43 +24,67 @@ class PageAdminController extends Controller
         }
         
     }
-
-    public function postEditProduct(Request $req){
-        $this->validate($req,
-            [
-                // 'email'=>'required|email|unique:users,email',
-                // 'password'=>'required|min:6|max:20',
-                // 'fullname'=>'required',
-                // 're_password'=>'required|same:password',
-
-                'idEditProductName'=>'required',
-                'productname'=>'required',
-                'idtype'=>'required',
-                'description'=>'required',
-                'unitprice'=>'required',
-                'image'=>'required',
-                'unit'=>'required',
-                'new'=>'required'
-            ],
-            [
-                'email.requied'=>'Please enter your email',
-                'email.email'=>'Email format is not correct',
-                'email.unique'=>'Email already exists',
-                'password.requied'=>'Please enter a password',
-                're_password.same'=>'password is not the same',
-                'password.min'=>'password at least 6 characters',
-                'password.max'=>'password must not exceed 20 characters'
-            ],
-        );
-        $user= new User();
-        $user->full_name =$req-> fullname;
-        $user->email = $req->email;
-        $user->password = Hash::make($req->password);
-        $user->phone = $req->phone;
-        $user->address = $req->adress;
-        $user->save();
-        return redirect()->back()->with('thanhcong','Create Account Success');
+    
+    // Delete Product
+    public function getDeleteProduct($id){
+        $Product= new Product();
+        $product= $Product::find($id);
+        $product->delete();
+        return redirect()->back();
     }
+
+    // Delete Customer
+    public function getDeleteCustomer($id){
+        $Customer= new Customer();
+        $customer= $Customer::find($id);
+        $customer->delete();
+        return redirect()->back();
+    }
+
+    // Delete User
+    public function getDeleteUser($id){
+        $User= new User();
+        $user= $User::find($id);
+        $user->delete();
+        return redirect()->back();
+    }
+
+    // public function postEditProduct(Request $req){
+    //     $this->validate($req,
+    //         [
+    //             // 'email'=>'required|email|unique:users,email',
+    //             // 'password'=>'required|min:6|max:20',
+    //             // 'fullname'=>'required',
+    //             // 're_password'=>'required|same:password',
+
+    //             'idEditProductName'=>'required',
+    //             'productname'=>'required',
+    //             'idtype'=>'required',
+    //             'description'=>'required',
+    //             'unitprice'=>'required',
+    //             'image'=>'required',
+    //             'unit'=>'required',
+    //             'new'=>'required'
+    //         ],
+    //         [
+    //             'email.requied'=>'Please enter your email',
+    //             'email.email'=>'Email format is not correct',
+    //             'email.unique'=>'Email already exists',
+    //             'password.requied'=>'Please enter a password',
+    //             're_password.same'=>'password is not the same',
+    //             'password.min'=>'password at least 6 characters',
+    //             'password.max'=>'password must not exceed 20 characters'
+    //         ],
+    //     );
+    //     $user= new User();
+    //     $user->full_name =$req-> fullname;
+    //     $user->email = $req->email;
+    //     $user->password = Hash::make($req->password);
+    //     $user->phone = $req->phone;
+    //     $user->address = $req->adress;
+    //     $user->save();
+    //     return redirect()->back()->with('thanhcong','Create Account Success');
+    // }
 
     public function getCustomer(){
         if (Auth::check()){
