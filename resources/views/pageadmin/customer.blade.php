@@ -26,6 +26,17 @@
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
              Add
             </button>
+            @if(count($errors)>0)
+                  <div class="alert alert-danger">
+                      @foreach ( $errors->all() as $err)
+                          {{$err}}
+                      @endforeach
+              </div>
+                  
+              @endif
+              @if(Session::has('thanhcong'))
+                  <div class="alert alert-success">{{Session::get('thanhcong')}}</div>
+              @endif
             <div class="card-tools">
               <div class="input-group input-group-sm" style="width: 150px;">
                 <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -64,10 +75,11 @@
                     <td>{{$c->phone_number}}</td>
                     <td>{{$c->note}}</td>
                     <td>
-                      <button href="#" type="button" data-customer="{{$c}}" onclick="myFunction()" id="editModal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                      {{-- <button href="#" title="quick view" data-name="{{$c}}" class="quick-view-btn" data-toggle="modal" data-target="#exampleModal"> --}}
+                      {{-- <button href="{{route('clickedit',$c->id)}}" type="button" data-customer="{{$c}}"  onclick="myFunction()" id="editModal" class="btn btn-primary" data-toggle="modal" data-target="#exampleEditModal"> --}}
+                      <a href="{{route('getsinglecustomer',$c->id)}}" type="button" data-customer="{{$c}}"  id="editModal" class="btn btn-primary" >
+                      {{-- <a href="#" title="quick view" data-name="{{$c}}" class="quick-view-btn" data-toggle="modal" data-target="#exampleModal"> --}}
                         Edit
-                      </button>                      
+                      </a>                      
                       /
                       <a type="button" href="{{route('delcustomer',$c->id)}}" class="btn btn-danger" >
                         Delete
@@ -76,7 +88,7 @@
                   </tr>
                 @endforeach
                 {{-- js insert data in modal product new --}}
-                <script>
+                {{-- <script>
                 // document.getElementById("editModal").addEventListener("click", myFunction);
                 //   function myFunction() {
                 //     // var id = $(this).data('name');
@@ -97,7 +109,7 @@
                       $("#note").val($(this).data('customer').note);
                       
                   });
-                </script>
+                </script> --}}
                 
               </tbody>
             </table>            
@@ -109,104 +121,109 @@
     </div>
     <!-- /.content -->
   </div>
-  <!-- Modal -->
+  <!-- Add Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="card-body">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Id</label>
-            <input type="id" id="idEditCustomerName" class="form-control"  placeholder="Id">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Customer Name</label>
-            <input type="customername" id="customername" class="form-control"  placeholder="Product Name">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Gender</label>
-            <input type="gender" id="gender" class="form-control"  placeholder="Id Type">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
-            <input type="email" id="email" class="form-control"  placeholder="Description">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Adress</label>
-            <input type="address" id="address" class="form-control"  placeholder="Unit Price">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Phone Number</label>
-            <input type="phone_number" id="phone_number" class="form-control"  placeholder="Promotion Price">
-          </div>
-          {{-- <div class="form-group">
-            <label for="exampleInputEmail1">Image</label>
-            <input type="image" id="image" class="form-control"  placeholder="Image">
-          </div> --}}
-          {{-- <div class="form-group">
-            <label for="exampleInputFile">File image</label>
-            <div class="input-group">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="image" name="image"
-                accept="image/png, image/jpeg">
-                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-              </div>
-              <div class="input-group-append">
-                <span class="input-group-text">Upload</span>
-              </div>
-            </div>
-          </div> --}}
-          <div class="form-group">
-            <label for="exampleInputEmail1">Note</label>
-            <input type="note" id="note" class="form-control"  placeholder="Unit">
-          </div>
-          {{-- <div class="form-group">
-            <label for="exampleInputEmail1">New</label>
-            <input type="new" id="new" class="form-control"  placeholder="New">
-          </div> --}}
-          {{-- <div class="form-group">
-            <label>Id Type</label>
-              <select id="idtype" class="form-control">
-                <option value="1">Mr</option>
-                <option value="2">Mrs</option>
-                <option value="3">Ms</option>
-                <option value="4">Dr</option>
-                <option value="5">Prof</option>
-              </select>
-          </div> --}}
-          {{-- <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          </div> --}}
-          {{-- <div class="form-group">
-            <label for="exampleInputFile">File input</label>
-            <div class="input-group">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="exampleInputFile">
-                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-              </div>
-              <div class="input-group-append">
-                <span class="input-group-text">Upload</span>
-              </div>
-            </div>
-          </div> --}}
-          {{-- <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div> --}}
+      <form action="{{route('customeraddadmin')}}" method="POST">
+        <input type="hidden" name="_token" value="{{csrf_token()}}">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Customer</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+        <div class="modal-body">
+          <div class="card-body">            
+            <div class="form-group">
+              <label for="exampleInputEmail1">Id</label>
+              <input type="id"  name="idEditCustomerName" class="form-control" disabled placeholder="Id">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Customer Name</label>
+              <input type="customername"  name="customername" class="form-control"  placeholder="Product Name">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Gender</label>
+              <input type="gender"  name="gender" class="form-control"  placeholder="Id Type">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email</label>
+              <input type="email" name="email" class="form-control"  placeholder="Description">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Adress</label>
+              <input type="address"  name="address" class="form-control"  placeholder="Unit Price">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Phone Number</label>
+              <input type="phone_number"  name="phone_number" class="form-control"  placeholder="Promotion Price">
+            </div>
+            {{-- <div class="form-group">
+              <label for="exampleInputEmail1">Image</label>
+              <input type="image" id="image" class="form-control"  placeholder="Image">
+            </div> --}}
+            {{-- <div class="form-group">
+              <label for="exampleInputFile">File image</label>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="image" name="image"
+                  accept="image/png, image/jpeg">
+                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                </div>
+                <div class="input-group-append">
+                  <span class="input-group-text">Upload</span>
+                </div>
+              </div>
+            </div> --}}
+            <div class="form-group">
+              <label for="exampleInputEmail1">Note</label>
+              <input type="note" name="note" class="form-control"  placeholder="Note">
+            </div>
+            {{-- <div class="form-group">
+              <label for="exampleInputEmail1">New</label>
+              <input type="new" id="new" class="form-control"  placeholder="New">
+            </div> --}}
+            {{-- <div class="form-group">
+              <label>Id Type</label>
+                <select id="idtype" class="form-control">
+                  <option value="1">Mr</option>
+                  <option value="2">Mrs</option>
+                  <option value="3">Ms</option>
+                  <option value="4">Dr</option>
+                  <option value="5">Prof</option>
+                </select>
+            </div> --}}
+            {{-- <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div> --}}
+            {{-- <div class="form-group">
+              <label for="exampleInputFile">File input</label>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="exampleInputFile">
+                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                </div>
+                <div class="input-group-append">
+                  <span class="input-group-text">Upload</span>
+                </div>
+              </div>
+            </div> --}}
+            {{-- <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div> --}}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
+
+ 
 @endsection

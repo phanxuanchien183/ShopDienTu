@@ -153,9 +153,46 @@ Route::get('customer-admin', [
     'uses'=>'App\Http\Controllers\PageAdminController@getCustomer'
 ]);
 
+Route::post('customer-add-admin', [
+    'as'=>'customeraddadmin',
+    'uses'=>'App\Http\Controllers\PageAdminController@postAddCustomer'
+]);
+
+// Route::put('customer-edit-admin/{id}', [
+//     'as'=>'customereditadmin',
+//     'uses'=>'App\Http\Controllers\PageAdminController@postEditCustomer'
+// ]);
+
+// Route::post('customer-edit-admin', [
+//     'as'=>'customereditadmin',
+//     'uses'=>'App\Http\Controllers\PageAdminController@postEditCustomer'
+// ]);
+
+// Route::get('click_edit/{id}','PageAdminController@getEditCustomer');
+
+// Route::get('click_edit/{id}', [
+//     'as'=>'clickedit',
+//     'uses'=>'App\Http\Controllers\PageAdminController@getEditCustomer'
+// ]);
+
+Route::get('get-single-customer/{id}', [
+    'as'=>'getsinglecustomer',
+    'uses'=>'App\Http\Controllers\PageAdminController@getSingleCustomer'
+]);
+
+Route::post('update-customer/{id}', [
+    'as'=>'updatecustomer',
+    'uses'=>'App\Http\Controllers\PageAdminController@getUpdateCustomer'
+]);
+
 Route::get('user-admin', [
     'as'=>'useradmin',
     'uses'=>'App\Http\Controllers\PageAdminController@getUser'
+]);
+
+Route::get('product-type-admin', [
+    'as'=>'producttypeadmin',
+    'uses'=>'App\Http\Controllers\PageAdminController@getProductType'
 ]);
 
 Route::get('del-product/{id}', [
@@ -172,3 +209,9 @@ Route::get('del-user/{id}', [
     'as'=>'deluser',
     'uses'=>'App\Http\Controllers\PageAdminController@getDeleteUser'
 ]);
+
+Route::get('del-product-type/{id}', [
+    'as'=>'delproducttype',
+    'uses'=>'App\Http\Controllers\PageAdminController@getDeleteProductType'
+]);
+

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th12 30, 2020 lúc 06:25 AM
+-- Thời gian đã tạo: Th1 04, 2021 lúc 12:42 PM
 -- Phiên bản máy phục vụ: 5.7.31
 -- Phiên bản PHP: 7.3.21
 
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `customer`
@@ -118,7 +118,28 @@ INSERT INTO `customer` (`id`, `name`, `gender`, `email`, `address`, `phone_numbe
 (12, 'Khoa phạm', 'Nam', 'khoapham@gmail.com', 'Lê thị riêng', '1234567890', 'Vui lòng chuyển đúng hạn', '2017-03-21 07:20:07', '2017-03-21 07:20:07'),
 (11, 'Hương Hương', 'Nữ', 'huongnguyenak96@gmail.com', 'Lê Thị Riêng, Quận 1', '234567890-', 'không chú', '2017-03-21 07:16:09', '2017-03-21 07:16:09'),
 (18, 'Phan Xuân Chiến', 'Nam', 'ngoisaoxau98@gmail.com', '159/48/40 Trần Văn Đang phường 11', '0374463636', 'avvv', '2020-12-27 06:12:09', '2020-12-27 06:12:09'),
-(19, 'Phan Xuân Chiến', 'Nam', 'ngoisaoxau98@gmail.com', '559 Trường Chinh', '0374463636', 'avv', '2020-12-27 06:14:00', '2020-12-27 06:14:00');
+(19, 'Phan Xuân Chiến', 'Nam', 'ngoisaoxau98@gmail.com', '559 Trường Chinh', '0374463636', 'avv', '2020-12-27 06:14:00', '2020-12-27 06:14:00'),
+(26, 'Phan Xuân Chiến', 'nam', 'ngoisaoxau98@gmail.com', '559 Trường Chinh', '0374463636', 'sdfdf', '2021-01-04 11:57:32', '2021-01-04 11:57:32'),
+(29, 'Phan Xuan Chien', 'Nam', 'ngoisaoxau98@gmail.com', '61/20/1 TCH35, p.Tan Chanh Hiep Quan 12', '1674463636', 'sdfdf', '2021-01-04 12:10:59', '2021-01-04 12:10:59'),
+(30, 'Phan Xuân Chiến', 'Nam', 'huongnguyen@gmail.com', '559 Trường Chinh', '0374463636', 'sdfd', '2021-01-04 12:14:38', '2021-01-04 12:14:38'),
+(34, 'ádasdasd', 'ádasd', 'ngoisaoxau98@gmail.com', '559 Trường Chinh', '0374463636', 'sdfd', '2021-01-04 12:29:32', '2021-01-04 12:29:32'),
+(35, 'ádfsadf', 'Nam', 'phanxuanchien183@gmail.com', 'sdf', '0374463636', 'sdfdf', '2021-01-04 12:33:13', '2021-01-04 12:33:13'),
+(32, 'Phan Xuân Chiến', 'Nữ', 'huongnguyen@gmail.com', '559 Trường Chinh', '0374463636', 'sdfdf', '2021-01-04 12:18:11', '2021-01-04 12:18:11'),
+(33, 'Phan Xuân Chiến', 'Nam', 'ngoisaoxau98@gmail.com', '559 Trường Chinh', '0374463636', 'avvv', '2021-01-04 12:19:26', '2021-01-04 12:19:26');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -221,10 +242,10 @@ INSERT INTO `products` (`id`, `name`, `id_type`, `description`, `unit_price`, `p
 (44, 'Quạt điều hòa Honeywell ES800', 5, 'Quạt điều hòa Honeywell ES800 (hay còn gọi là máy làm mát không khí) thiết kế đẹp, kết cấu chắc chắn, có bánh xe ở bên dưới thân máy.\r\n\r\nGiúp người dùng di chuyển quạt điều hòa (hay còn gọi là máy làm mát không khí) an toàn, nhanh chóng.', 120, 0, 'ES800.jpg', 'cái', 2, '2020-10-13 02:20:00', '2020-10-19 03:20:00'),
 (45, 'Quạt điều hòa Honeywell CL20AE', 5, 'Quạt điều hòa Honeywell (hay còn gọi là quạt hơi nước) với công suất 230 W, làm mát không gian rộng lớn diện tích đến 25 đến 30 m2.\r\nĐộ ồn 40 - 60 dB tương ứng với tiếng thì thầm, văn phòng làm việc, sảnh yên tỉnh khách sạn. Không gây quá ồn ào khi vận hành quạt', 120, 0, 'CL20AE.jpg', 'cái', 0, '2020-10-13 02:20:00', '2020-10-19 03:20:00'),
 (46, 'Điện thoại Xiaomi Redmi 9 (4GB/64GB)', 6, 'Xiaomi tiếp tục ra mắt Redmi 9, phiên bản kế nhiệm Redmi 8 “lột xác” với diện mạo tươi mới trẻ trung, cấu hình mạnh hơn cùng một viên pin siêu “trâu”, mẫu smartphone này hứa hẹn sẽ là lựa chọn hấp dẫn phân khúc giá rẻ.\r\nNâng cấp gấp đôi với 4 camera sau\r\nNếu như “người anh” Redmi 8 chỉ trang bị cụm camera kép, thì đến Redmi 9 số lượng camera đã tăng lên gấp đôi, để bạn tha hồ chụp những kiểu ảnh ưa thích với 4 camera sau bao gồm: camera chính 13 MP, camera góc siêu rộng 8 MP, camera macro 5 MP và cảm biến đo độ sâu 2 MP.', 120, 0, 'redmi9.jpg', 'cái', 0, '2020-10-13 02:20:00', '2020-10-19 03:20:00'),
-(47, '     103 đánh giá\r\n', 6, 'Samsung Galaxy A51 8GB/128GB là phiên bản cao cấp vừa mới được Samsung giới thiệu tại thị trường Việt Nam. Chiếc điện thoại gây ấn tượng với thiết kế màn hình tràn viền thế hệ mới, hiệu năng tốt cùng cụm camera chất lượng cao, và theo Strategy Analytics, máy là Smartphone Android Bán Chạy Nhất Thế Giới Quý 1/2020.\r\nMàn hình vô cực kích thước lớn\r\nSamsung A51 được trang bị màn hình Super AMOLED được thiết kế \"đục lỗ\" tràn viền đặc trưng trên các dòng sản phẩm cao cấp của Samsung giúp tối ưu diện tích màn hình nhưng vẫn giữ nguyên kích thước tổng thể của máy.', 140000, 0, 'A51.jpg', 'cái', 0, '2020-10-13 02:20:00', '2020-10-19 03:20:00'),
-(48, 'Laptop Apple MacBook Air 2017 i5 1.8GHz/8GB/128GB (MQD32SA/A)', 7, 'Sang trọng cao cấp\r\nVẻ ngoài đẳng cấp với kim loại nguyên khối và những đường nét thiết kế chuẩn mực, Macbook Air MQD32SA/A (2017) sẽ thu hút bất kì ai từ cái nhìn đầu tiên. Đây không chỉ là một công cụ phục vụ công việc mà hơn thế nữa là như một \"món trang sức\" tôn lên vẻ đẳng cấp của người sử dụng.\r\n\r\nMáy tính xách tay Macbook trong bài viết này rất nhẹ và mỏng phù hợp cho mọi đối tượng sử dụng, mang đi mọi nơi.\r\n\r\n', 940, 0, 'Mac2017.jpg', 'cái', 2, '2020-10-13 02:20:00', '2020-10-19 03:20:00'),
-(49, 'Laptop Lenovo IdeaPad Slim 3 15IIL05 i3 1005G1/4GB/512GB/Win10 (81WE003RVN)', 7, 'Laptop Lenovo IdeaPad 3 15IIL05 có cấu hình vừa đủ dùng với chip Intel Core i3, RAM 4 GB, xử lý ổn định các công việc văn phòng thường ngày, phù hợp với học sinh sinh viên, dân văn phòng.\r\nThiết kế đơn giản, cao cấp\r\nLenovo IdeaPad 3 vẫn có thiết kế đơn giản tuy nhiên logo được khắc kim loại, mặt lưng xước dọc tạo vẻ ngoài sang trọng và cao cấp hơn. Máy nặng 1.85 kg, dày 19.9 mm dễ cầm tay và cho vào balo đi làm hằng ngày.', 120000, 100000, '15IIL05.jpg', 'cái', 0, '2020-10-13 02:20:00', '2020-10-19 03:20:00'),
-(50, 'Laptop Asus VivoBook X509MA N5030/4GB/512GB/Win10 (EJ256T)', 7, 'Asus VivoBook X509MA N5030 (EJ256T) sở hữu cấu hình ổn, ổ cứng SSD cực nhanh cùng thiết kế sang trọng, gọn nhẹ hoàn toàn phù hợp với các bạn học sinh, sinh viên trong việc học tập, văn phòng có thể mang theo bên mình một cách dễ dàng, tiện lợi.\r\nThiết kế hiện đại, gọn nhẹ\r\nLaptop Asus sở hữu thiết kế gọn nhẹ nhưng không kém phần sang trọng với trọng lượng chỉ 1.9 kg, độ dày 22.9 mm sẽ giúp bạn dễ dàng mang theo bên mình mà một cách tiện lợi.\r\n\r\nLaptop có vỏ bằng nhựa chắn chắn cùng gam màu xám nổi bật, bắt mắt và thu hút sẽ góp phần tạo điểm nhấn cá tính cho chính bạn.', 120, 100, 'X509MA.jpg', 'cái', 2, '2020-10-13 02:20:00', '2020-10-19 03:20:00');
+(47, 'Galxy A51', 6, 'Samsung Galaxy A51 8GB/128GB là phiên bản cao cấp vừa mới được Samsung giới thiệu tại thị trường Việt Nam. Chiếc điện thoại gây ấn tượng với thiết kế màn hình tràn viền thế hệ mới, hiệu năng tốt cùng cụm camera chất lượng cao, và theo Strategy Analytics, máy là Smartphone Android Bán Chạy Nhất Thế Giới Quý 1/2020.\r\nMàn hình vô cực kích thước lớn\r\nSamsung A51 được trang bị màn hình Super AMOLED được thiết kế \"đục lỗ\" tràn viền đặc trưng trên các dòng sản phẩm cao cấp của Samsung giúp tối ưu diện tích màn hình nhưng vẫn giữ nguyên kích thước tổng thể của máy.', 140000, 0, 'A51.jpg', 'cái', 0, '2020-10-13 02:20:00', '2020-10-19 03:20:00'),
+(48, 'Surface Studio 2018', 7, 'Dive in with Intel® Core™ i7-7820HQ processors, SSD storage for faster file handling, and more graphics memory to handle your workflow and support better gaming, mixed reality, and VR.', 940, 824, 'st2018.jpg', 'cái', 2, '2020-10-13 02:20:00', '2020-10-19 03:20:00'),
+(49, 'DJI Phantom 4 PRO Professional Drone', 7, 'An uprated camera is equipped with a 1-inch 20-megapixel sensor capable of shooting 4K/60fps video and Burst Mode stills at 14 fps.\r\n\r\nThe adoption of titanium alloy and magnesium alloy construction increases the rigidity of the airframe and reduces weight, making the Phantom 4 Pro similar in weight to the Phantom 4. The FlightAutonomy system adds dual rear vision sensors and infrared sensing systems for a total of 5-direction of obstacle sensing and 4-direction of obstacle avoidance.', 1849, 1849, 'phantom4pro.jpg', 'cái', 0, '2020-10-13 02:20:00', '2020-10-19 03:20:00'),
+(50, 'Galaxy S9', 7, 'Siêu phẩm Samsung Galaxy S9 chính thức ra mắt mang theo hàng loạt cải tiến, tính năng cao cấp như camera thay đổi khẩu độ, quay phim siêu chậm 960 fps, AR Emoji... nhanh chóng gây sốt làng công nghệ.\r\nThiết kế cao cấp, sang trọng\r\nChiếc điện thoại Samsung mới này vẫn đi theo triết lí thiết kế tương tự như Galaxy S8 với khung viền kim loại cứng cáp cùng mặt lưng kính bóng bẩy bo cong mềm mại. Đặc biệt, phần khung viền của Galaxy S9 được hoàn thiện bằng kim loại nhám giúp cầm nắm chắc tay tốt hơn hẳn, chứ không bóng loáng như thời S8.', 1209, 1209, 's9.png', 'cái', 2, '2020-10-13 02:20:00', '2020-10-19 03:20:00');
 
 -- --------------------------------------------------------
 
@@ -295,17 +316,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `role` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
-INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `phone`, `address`, `remember_token`, `created_at`, `updated_at`) VALUES
-(6, 'Hương Hương', 'huonghuong08.php@gmail.com', '$2y$10$rGY4KT6ZSMmLnxIbmTXrsu2xdgRxm8x0UTwCyYCAzrJ320kYheSRq', '23456789', 'Hoàng Diệu 2', NULL, '2017-03-23 07:17:33', '2017-03-23 07:17:33'),
-(8, 'Phan Xuân Chiến', 'ngoisaoxau98@gmail.com', '$2y$10$d5s2gxhhUCQqiGrRqxrwH.XV2rvZXubNHCn4tfS.y9UPiMURwfKn2', '0374463636', '559 Trường Chinh', NULL, '2020-12-29 05:15:52', '2020-12-29 05:15:52');
+INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `phone`, `address`, `remember_token`, `created_at`, `updated_at`, `role`) VALUES
+(6, 'Hương Hương', 'huonghuong08.php@gmail.com', '$2y$10$rGY4KT6ZSMmLnxIbmTXrsu2xdgRxm8x0UTwCyYCAzrJ320kYheSRq', '23456789', 'Hoàng Diệu 2', NULL, '2017-03-23 07:17:33', '2017-03-23 07:17:33', NULL),
+(8, 'Phan Xuân Chiến', 'ngoisaoxau98@gmail.com', '$2y$10$d5s2gxhhUCQqiGrRqxrwH.XV2rvZXubNHCn4tfS.y9UPiMURwfKn2', '0374463636', '559 Trường Chinh', NULL, '2020-12-29 05:15:52', '2020-12-29 05:15:52', NULL),
+(9, 'Admin', 'admin@gmail.com', '$2y$10$CBXxi4KKqfNYTXw7YI.Uuu4IuFb.jxw5b.qPEZbmysPRvMCGjxVBe', '0374464646', '559 Trường Chinh', NULL, '2021-01-03 05:56:17', '2021-01-03 05:56:17', 1);
 
 -- --------------------------------------------------------
 
@@ -329,7 +352,7 @@ CREATE TABLE IF NOT EXISTS `user_admin` (
 --
 
 INSERT INTO `user_admin` (`id`, `user_admin`, `password`, `active`, `created_ad`, `updated_ad`) VALUES
-(1, 'admin', 'admin', b'1', '2020-12-11 17:00:00', '2020-12-11 17:00:00');
+(1, 'ngoisaoxau98@gmail.com', '$2y$10$d5s2gxhhUCQqiGrRqxrwH.XV2rvZXubNHCn4tfS.y9UPiMURwfKn2', b'1', '2020-12-11 17:00:00', '2020-12-11 17:00:00');
 
 --
 -- Các ràng buộc cho các bảng đã đổ

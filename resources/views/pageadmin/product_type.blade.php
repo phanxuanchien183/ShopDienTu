@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">User</h1>
+            <h1 class="m-0">Product Type</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">User</li>
+              <li class="breadcrumb-item active">Product Type</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -45,31 +45,29 @@
                 <tr>
                   <th>ID</th>
                   <th>Name</th>
-                  <th >Email</th>
-                  <th>Password</th>
-                  <th>Phone Number</th>
-                  <th>Address</th>
-                  <th>Token</th>
+                  <th style="max-width:400px;overflow:hidden">Description</th>
+                  <th>Image</th>
+                  <th>Create at</th>
+                  <th>Update at</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                @foreach ($user as $u)
+                @foreach ($producttype as $pt)
                   <tr>
-                    <td>{{$u->id}}</td>
-                    <td>{{$u->full_name}}</td>
-                    <td >{{$u->email}}</td>
-                    <td>{{$u->password}}</td>
-                    <td>{{$u->phone}}</td>
-                    <td>{{$u->address}}</td>
-                    <td>{{$u->remember_token}}</td>
+                    <td>{{$pt->id}}</td>
+                    <td>{{$pt->name}}</td>
+                    <td style="max-width:400px;overflow:hidden">{{$pt->description}}</td>
+                    <td>{{$pt->image}}</td>
+                    <td>{{$pt->created_at}}</td>
+                    <td>{{$pt->updated_at}}</td>
                     <td>
-                      <button href="#" type="button" data-user="{{$u}}" onclick="myFunction()" id="editModal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                      {{-- <button href="#" title="quick view" data-name="{{$u}}" class="quick-view-btn" data-toggle="modal" data-target="#exampleModal"> --}}
+                      <button href="#" type="button" data-user="{{$pt}}" onclick="myFunction()" id="editModal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                      {{-- <button href="#" title="quick view" data-name="{{$pt}}" class="quick-view-btn" data-toggle="modal" data-target="#exampleModal"> --}}
                         Edit
                       </button>                      
                       /
-                      <a type="button" href="{{route('deluser',$u->id)}}" class="btn btn-danger" >
+                      <a type="button" href="{{route('delproducttype',$pt->id)}}" class="btn btn-danger" >
                         Delete
                       </button> 
                     </td>
@@ -164,7 +162,7 @@
           </div> --}}
           <div class="form-group">
             <label for="exampleInputEmail1">Token</label>
-            <input type="remember_token" id="remember_token" class="form-control"  placeholder="Token">
+            <input type="remember_token" id="remember_token" class="form-control"  placeholder="Unit">
           </div>
           {{-- <div class="form-group">
             <label for="exampleInputEmail1">New</label>
