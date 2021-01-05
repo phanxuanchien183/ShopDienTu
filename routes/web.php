@@ -158,6 +158,16 @@ Route::post('customer-add-admin', [
     'uses'=>'App\Http\Controllers\PageAdminController@postAddCustomer'
 ]);
 
+Route::post('user-add-admin', [
+    'as'=>'useraddadmin',
+    'uses'=>'App\Http\Controllers\PageAdminController@postAddUser'
+]);
+
+Route::post('product-add-admin', [
+    'as'=>'productaddadmin',
+    'uses'=>'App\Http\Controllers\PageAdminController@postAddProduct'
+]);
+
 // Route::put('customer-edit-admin/{id}', [
 //     'as'=>'customereditadmin',
 //     'uses'=>'App\Http\Controllers\PageAdminController@postEditCustomer'
@@ -180,9 +190,19 @@ Route::get('get-single-customer/{id}', [
     'uses'=>'App\Http\Controllers\PageAdminController@getSingleCustomer'
 ]);
 
+Route::get('get-single-user/{id}', [
+    'as'=>'getsingleuser',
+    'uses'=>'App\Http\Controllers\PageAdminController@getSingleUser'
+]);
+
 Route::post('update-customer/{id}', [
     'as'=>'updatecustomer',
     'uses'=>'App\Http\Controllers\PageAdminController@getUpdateCustomer'
+]);
+
+Route::post('update-user/{id}', [
+    'as'=>'updateuser',
+    'uses'=>'App\Http\Controllers\PageAdminController@getUpdateUser'
 ]);
 
 Route::get('user-admin', [

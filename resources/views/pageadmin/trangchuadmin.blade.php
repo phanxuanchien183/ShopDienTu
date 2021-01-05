@@ -62,10 +62,10 @@
                     <td>{{$p->image}}</td>
                     <td>{{$p->new}}</td>
                     <td>
-                      <button href="#" type="button" data-product="{{$p}}" onclick="myFunction()" id="editModal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                      {{-- <button href="#" title="quick view" data-name="{{$p}}" class="quick-view-btn" data-toggle="modal" data-target="#exampleModal"> --}}
+                      <a href="#" type="button" data-customer="{{$p}}"  id="editModal" class="btn btn-primary" >
+                      {{-- <a href="#" title="quick view" data-name="{{$p}}" class="quick-view-btn" data-toggle="modal" data-target="#exampleModal"> --}}
                         Edit
-                      </button>                      
+                      </a>                      
                       /
                       <a type="button" href="{{route('delproduct',$p->id)}}" class="btn btn-danger" >
                         Delete
@@ -73,30 +73,7 @@
                     </td>
                   </tr>
                 @endforeach
-                {{-- js insert data in modal product new --}}
-                <script>
-                // document.getElementById("editModal").addEventListener("click", myFunction);
-                //   function myFunction() {
-                //     // var id = $(this).data('name');
-                //     console.log($(this).data('product'));
-                //     $("#idEditProductName").val($(this).data('product').id);
-                //     $("#productname").val($(this).data('product').name);
-                //     // $("#idtype option:selected").text($(this).data('name').id_type);
-                //   }
-                  
-                  $("button#editModal").on('click',function(evt){
-                      console.log($(this).data('product')); 
-                      $("#idEditProductName").val($(this).data('product').id);
-                      $("#productname").val($(this).data('product').name);
-                      $("#idtype").val($(this).data('product').id_type);
-                      $("#description").val($(this).data('product').description);
-                      $("#unitprice").val($(this).data('product').unit_price);
-                      $("#promotionprice").val($(this).data('product').promotion_price);
-                      $("#image").val($(this).data('product').image);
-                      $("#unit").val($(this).data('product').unit);
-                      $("#new").val($(this).data('product').new);
-                  });
-                </script>
+                
                 
               </tbody>
             </table>            
@@ -112,6 +89,8 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      <form action="{{route('productaddadmin')}}" method="POST">
+        <input type="hidden" name="_token" value="{{csrf_token()}}">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -122,32 +101,29 @@
         <div class="card-body">
           <div class="form-group">
             <label for="exampleInputEmail1">Id</label>
-            <input type="id" id="idEditProductName" class="form-control"  placeholder="Id">
+            <input type="id" name="idEditProductName" class="form-control"  placeholder="Id">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Product Name</label>
-            <input type="productname" id="productname" class="form-control"  placeholder="Product Name">
+            <input type="productname" name="productname" class="form-control"  placeholder="Product Name">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Id Type</label>
-            <input type="idtype" id="idtype" class="form-control"  placeholder="Id Type">
+            <input type="idtype" name="idtype" class="form-control"  placeholder="Id Type">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Description</label>
-            <input type="description" id="description" class="form-control"  placeholder="Description">
+            <input type="description" name="description" class="form-control"  placeholder="Description">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Unit Price</label>
-            <input type="unitprice" id="unitprice" class="form-control"  placeholder="Unit Price">
+            <input type="unitprice" name="unitprice" class="form-control"  placeholder="Unit Price">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Promotion Price</label>
-            <input type="promotionprice" id="promotionprice" class="form-control"  placeholder="Promotion Price">
+            <input type="promotionprice" name="promotionprice" class="form-control"  placeholder="Promotion Price">
           </div>
-          {{-- <div class="form-group">
-            <label for="exampleInputEmail1">Image</label>
-            <input type="image" id="image" class="form-control"  placeholder="Image">
-          </div> --}}
+          
           <div class="form-group">
             <label for="exampleInputFile">File image</label>
             <div class="input-group">
@@ -163,48 +139,20 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Unit</label>
-            <input type="unit" id="unit" class="form-control"  placeholder="Unit">
+            <input type="unit" name="unit" class="form-control"  placeholder="Unit">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">New</label>
-            <input type="new" id="new" class="form-control"  placeholder="New">
+            <input type="new" name="new" class="form-control"  placeholder="New">
           </div>
-          {{-- <div class="form-group">
-            <label>Id Type</label>
-              <select id="idtype" class="form-control">
-                <option value="1">Mr</option>
-                <option value="2">Mrs</option>
-                <option value="3">Ms</option>
-                <option value="4">Dr</option>
-                <option value="5">Prof</option>
-              </select>
-          </div> --}}
-          {{-- <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          </div> --}}
-          {{-- <div class="form-group">
-            <label for="exampleInputFile">File input</label>
-            <div class="input-group">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="exampleInputFile">
-                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-              </div>
-              <div class="input-group-append">
-                <span class="input-group-text">Upload</span>
-              </div>
-            </div>
-          </div> --}}
-          {{-- <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div> --}}
+          
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
+    </form>
     </div>
   </div>
 </div>

@@ -149,25 +149,114 @@ class PageAdminController extends Controller
         return redirect()->back()->with('thanhcong','Create customer Success');
     }
 
+    // Add User
+    public function postAddUser(Request $req){
+        $this->validate($req,
+            [
+                
+
+                // 'idEditCustomerName'=>'required',
+                'full_name'=>'required',
+                'password'=>'required|min:6|max:20',
+                'email'=>'required|email|unique:users,email',
+                'phone'=>'required',
+                'address'=>'required',
+                // 'note'=>'required'
+            ],
+            [
+                'email.requied'=>'Please enter your email',
+                'email.email'=>'Email format is not correct',
+                'email.unique'=>'Email already exists',
+                // 'idEditCustomerName.requied'=>'Please enter your ID',
+                'full_name.requied'=>'Please enter your Name',
+                'password.requied'=>'Please enter a password',
+                'password.min'=>'password at least 6 characters',
+                'password.max'=>'password must not exceed 20 characters',
+                'address.requied'=>'Please enter your Address',
+                'phone_number.requied'=>'Please enter your Phone Number',
+                // 'note.requied'=>'Please enter your Note',
+                
+            ],
+        );
+        $user= new User();
+        $user->id =$req-> idEditUserName;
+        $user->full_name =$req-> full_name;
+        $user->email =$req-> email;
+        // $user->password =Hash::make($req->password);
+        $user->password = Hash::make($req->password);
+        $user->phone =$req-> phone;
+        $user->address =$req-> address;
+        $user->remember_token =$req-> remember_token;
+        // $user->note =$req-> note;            
+        $user->save();
+        return redirect()->back()->with('thanhcong','Create customer Success');
+    }
+
+    // Add Product ---- CHƯA XONG
+    public function postAddProduct(Request $req){
+        $this->validate($req,
+            [
+                
+
+                // 'idEditCustomerName'=>'required',
+                'productname'=>'required',
+                // 'password'=>'required|min:6|max:20',
+                // 'email'=>'required|email|unique:users,email',
+                'idtype'=>'required',
+                'description'=>'required',
+                'unitprice'=>'required',
+                'promotionprice'=>'required',
+                // 'image'=>'required',
+                'unit'=>'required',
+                'new'=>'required',
+                // 'note'=>'required'
+            ],
+            [
+                'email.requied'=>'Please enter your email',
+                'email.email'=>'Email format is not correct',
+                'email.unique'=>'Email already exists',
+                // 'idEditCustomerName.requied'=>'Please enter your ID',
+                'full_name.requied'=>'Please enter your Name',
+                'password.requied'=>'Please enter a password',
+                'password.min'=>'password at least 6 characters',
+                'password.max'=>'password must not exceed 20 characters',
+                'address.requied'=>'Please enter your Address',
+                'phone_number.requied'=>'Please enter your Phone Number',
+                // 'note.requied'=>'Please enter your Note',
+                
+            ],
+        );
+        $product= new Product();
+        $product->id =$req-> idEditUserName;
+        $product->full_name =$req-> full_name;
+        $product->email =$req-> email;
+        // $user->password =Hash::make($req->password);
+        $product->password = Hash::make($req->password);
+        $product->phone =$req-> phone;
+        $product->address =$req-> address;
+        $product->remember_token =$req-> remember_token;
+        // $user->note =$req-> note;            
+        $product->save();
+        return redirect()->back()->with('thanhcong','Create customer Success');
+    }
+
     // Edit Customer
     
+     // lấy thông tin admin 
     public function getSingleCustomer($id){
         $customer=Customer::where('id',$id)->get();
         // $customer=Customer::all();
         return view('pageadmin.update_customer',compact('customer'));
     }
 
-    // public function getUpdateCustomer(Request $req, $id)
-    // {
-    //     $id=$req->input('id');
-    //     $name=$req->input('name');
-    //     $gender=$req->input('gender');
-    //     $email=$req->input('email');
-    //     $address=$req->input('address');
-    //     $phone_number=$req->input('phone_number');
-    //     $note=$req->input('note');
-    // }
+    // lấy thông tin user 
+    public function getSingleUser($id){
+        $user=User::where('id',$id)->get();
+        // $customer=Customer::all();
+        return view('pageadmin.update_users',compact('user'));
+    }
     
+    // cập nhật thông tin customer
     public function getUpdateCustomer(Request $req,$id){
         // $idcustomer=$req->input('id');
         $name=$req->input('name');
@@ -180,6 +269,23 @@ class PageAdminController extends Controller
         where id = ?', [$name,$gender,$email,$address,$phone_number,$note, $id]);
 
         return redirect()->route('customeradmin')->with('thanhcong','Data Update');
+    }
+
+    // cật nhật thông tin user
+    public function getUpdateUser(Request $req,$id){
+        // $idcustomer=$req->input('id');
+        // $id=$req->input('id');
+        $full_name=$req->input('full_name');
+        $email=$req->input('email');
+        // $password=$req->input('password');
+        $password = Hash::make($req->password);
+        $phone=$req->input('phone');
+        $address=$req->input('address');
+        $remember_token=$req->input('remember_token');
+        DB::update('update users set  full_name = ?, email = ?, password = ?, phone = ?, address = ?, remember_token = ?
+        where id = ?', [$full_name,$email,$password,$phone,$address,$remember_token, $id]);
+
+        return redirect()->route('useradmin')->with('thanhcong','Data Update');
     }
 
 

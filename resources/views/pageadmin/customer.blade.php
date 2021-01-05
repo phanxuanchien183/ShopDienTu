@@ -87,29 +87,7 @@
                     </td>
                   </tr>
                 @endforeach
-                {{-- js insert data in modal product new --}}
-                {{-- <script>
-                // document.getElementById("editModal").addEventListener("click", myFunction);
-                //   function myFunction() {
-                //     // var id = $(this).data('name');
-                //     console.log($(this).data('product'));
-                //     $("#idEditProductName").val($(this).data('product').id);
-                //     $("#productname").val($(this).data('product').name);
-                //     // $("#idtype option:selected").text($(this).data('name').id_type);
-                //   }
-                  
-                  $("button#editModal").on('click',function(evt){
-                      console.log($(this).data('customer')); 
-                      $("#idEditCustomerName").val($(this).data('customer').id);
-                      $("#customername").val($(this).data('customer').name);
-                      $("#gender").val($(this).data('customer').gender);
-                      $("#email").val($(this).data('customer').email);
-                      $("#address").val($(this).data('customer').address);
-                      $("#phone_number").val($(this).data('customer').phone_number);
-                      $("#note").val($(this).data('customer').note);
-                      
-                  });
-                </script> --}}
+                
                 
               </tbody>
             </table>            
@@ -159,61 +137,12 @@
               <label for="exampleInputEmail1">Phone Number</label>
               <input type="phone_number"  name="phone_number" class="form-control"  placeholder="Promotion Price">
             </div>
-            {{-- <div class="form-group">
-              <label for="exampleInputEmail1">Image</label>
-              <input type="image" id="image" class="form-control"  placeholder="Image">
-            </div> --}}
-            {{-- <div class="form-group">
-              <label for="exampleInputFile">File image</label>
-              <div class="input-group">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="image" name="image"
-                  accept="image/png, image/jpeg">
-                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                </div>
-                <div class="input-group-append">
-                  <span class="input-group-text">Upload</span>
-                </div>
-              </div>
-            </div> --}}
+           
             <div class="form-group">
               <label for="exampleInputEmail1">Note</label>
               <input type="note" name="note" class="form-control"  placeholder="Note">
             </div>
-            {{-- <div class="form-group">
-              <label for="exampleInputEmail1">New</label>
-              <input type="new" id="new" class="form-control"  placeholder="New">
-            </div> --}}
-            {{-- <div class="form-group">
-              <label>Id Type</label>
-                <select id="idtype" class="form-control">
-                  <option value="1">Mr</option>
-                  <option value="2">Mrs</option>
-                  <option value="3">Ms</option>
-                  <option value="4">Dr</option>
-                  <option value="5">Prof</option>
-                </select>
-            </div> --}}
-            {{-- <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div> --}}
-            {{-- <div class="form-group">
-              <label for="exampleInputFile">File input</label>
-              <div class="input-group">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="exampleInputFile">
-                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                </div>
-                <div class="input-group-append">
-                  <span class="input-group-text">Upload</span>
-                </div>
-              </div>
-            </div> --}}
-            {{-- <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div> --}}
+           
           </div>
         </div>
         <div class="modal-footer">
