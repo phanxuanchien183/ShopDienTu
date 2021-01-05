@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th1 04, 2021 lúc 12:42 PM
+-- Thời gian đã tạo: Th1 05, 2021 lúc 10:57 AM
 -- Phiên bản máy phục vụ: 5.7.31
 -- Phiên bản PHP: 7.3.21
 
@@ -105,27 +105,18 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `customer`
 --
 
 INSERT INTO `customer` (`id`, `name`, `gender`, `email`, `address`, `phone_number`, `note`, `created_at`, `updated_at`) VALUES
-(15, 'ê', 'Nữ', 'huongnguyen@gmail.com', 'e', 'e', 'e', '2017-03-24 07:14:32', '2017-03-24 07:14:32'),
-(14, 'hhh', 'nam', 'huongnguyen@gmail.com', 'Lê thị riêng', '99999999999999999', 'k', '2017-03-23 04:46:05', '2017-03-23 04:46:05'),
+(36, 'Phan Xuan Chien', 'Nam', 'phanxuanchien183@gmail.com', '61/20/1 TCH35, p.Tan Chanh Hiep Quan 12', '1674463636', 'avvv', '2021-01-05 10:15:11', '2021-01-05 10:15:11'),
 (13, 'Hương Hương', 'Nữ', 'huongnguyenak96@gmail.com', 'Lê Thị Riêng, Quận 1', '23456789', 'Vui lòng giao hàng trước 5h', '2017-03-21 07:29:31', '2017-03-21 07:29:31'),
-(12, 'Khoa phạm', 'Nam', 'khoapham@gmail.com', 'Lê thị riêng', '1234567890', 'Vui lòng chuyển đúng hạn', '2017-03-21 07:20:07', '2017-03-21 07:20:07'),
 (11, 'Hương Hương', 'Nữ', 'huongnguyenak96@gmail.com', 'Lê Thị Riêng, Quận 1', '234567890-', 'không chú', '2017-03-21 07:16:09', '2017-03-21 07:16:09'),
 (18, 'Phan Xuân Chiến', 'Nam', 'ngoisaoxau98@gmail.com', '159/48/40 Trần Văn Đang phường 11', '0374463636', 'avvv', '2020-12-27 06:12:09', '2020-12-27 06:12:09'),
-(19, 'Phan Xuân Chiến', 'Nam', 'ngoisaoxau98@gmail.com', '559 Trường Chinh', '0374463636', 'avv', '2020-12-27 06:14:00', '2020-12-27 06:14:00'),
-(26, 'Phan Xuân Chiến', 'nam', 'ngoisaoxau98@gmail.com', '559 Trường Chinh', '0374463636', 'sdfdf', '2021-01-04 11:57:32', '2021-01-04 11:57:32'),
-(29, 'Phan Xuan Chien', 'Nam', 'ngoisaoxau98@gmail.com', '61/20/1 TCH35, p.Tan Chanh Hiep Quan 12', '1674463636', 'sdfdf', '2021-01-04 12:10:59', '2021-01-04 12:10:59'),
-(30, 'Phan Xuân Chiến', 'Nam', 'huongnguyen@gmail.com', '559 Trường Chinh', '0374463636', 'sdfd', '2021-01-04 12:14:38', '2021-01-04 12:14:38'),
-(34, 'ádasdasd', 'ádasd', 'ngoisaoxau98@gmail.com', '559 Trường Chinh', '0374463636', 'sdfd', '2021-01-04 12:29:32', '2021-01-04 12:29:32'),
-(35, 'ádfsadf', 'Nam', 'phanxuanchien183@gmail.com', 'sdf', '0374463636', 'sdfdf', '2021-01-04 12:33:13', '2021-01-04 12:33:13'),
-(32, 'Phan Xuân Chiến', 'Nữ', 'huongnguyen@gmail.com', '559 Trường Chinh', '0374463636', 'sdfdf', '2021-01-04 12:18:11', '2021-01-04 12:18:11'),
-(33, 'Phan Xuân Chiến', 'Nam', 'ngoisaoxau98@gmail.com', '559 Trường Chinh', '0374463636', 'avvv', '2021-01-04 12:19:26', '2021-01-04 12:19:26');
+(19, 'Phan Xuan Chien', 'Nam', 'ngoisaoxau98@gmail.com', '61/20/1 TCH35, p.Tan Chanh Hiep Quan 12', '1674463636', 'avv', '2021-01-04 17:38:40', '2020-12-27 06:14:00');
 
 -- --------------------------------------------------------
 
@@ -319,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `role` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
@@ -328,7 +319,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `phone`, `address`, `remember_token`, `created_at`, `updated_at`, `role`) VALUES
 (6, 'Hương Hương', 'huonghuong08.php@gmail.com', '$2y$10$rGY4KT6ZSMmLnxIbmTXrsu2xdgRxm8x0UTwCyYCAzrJ320kYheSRq', '23456789', 'Hoàng Diệu 2', NULL, '2017-03-23 07:17:33', '2017-03-23 07:17:33', NULL),
 (8, 'Phan Xuân Chiến', 'ngoisaoxau98@gmail.com', '$2y$10$d5s2gxhhUCQqiGrRqxrwH.XV2rvZXubNHCn4tfS.y9UPiMURwfKn2', '0374463636', '559 Trường Chinh', NULL, '2020-12-29 05:15:52', '2020-12-29 05:15:52', NULL),
-(9, 'Admin', 'admin@gmail.com', '$2y$10$CBXxi4KKqfNYTXw7YI.Uuu4IuFb.jxw5b.qPEZbmysPRvMCGjxVBe', '0374464646', '559 Trường Chinh', NULL, '2021-01-03 05:56:17', '2021-01-03 05:56:17', 1);
+(9, 'Admin', 'admin@gmail.com', '$2y$10$CBXxi4KKqfNYTXw7YI.Uuu4IuFb.jxw5b.qPEZbmysPRvMCGjxVBe', '0374464646', '559 Trường Chinh', NULL, '2021-01-03 05:56:17', '2021-01-03 05:56:17', 1),
+(13, 'Phan Xuân Chiến', 'phanxuanchien183@gmail.com', '$2y$10$Rl/IOodZU2WHKMx2Ikh3JuMq0IJgyKaXglgdIbSmDvrUgEmaJ6If2', '0374463636', '559 Trường Chinh', NULL, '2021-01-05 10:30:19', '2021-01-05 10:30:19', NULL);
 
 -- --------------------------------------------------------
 
