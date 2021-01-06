@@ -156,7 +156,7 @@ class PageController extends Controller
                 return redirect()->route('trangchu')->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
             }
             else {
-                return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
+                return redirect()->back()->with(['flag'=>'danger','message'=>'Login fail']);
             }
     }
 

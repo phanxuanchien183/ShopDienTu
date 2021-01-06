@@ -71,17 +71,17 @@
                                         
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
-                                                <label>Họ tên <span class="required">*</span></label>
+                                                <label>Full name <span class="required">*</span></label>
                                                 <input placeholder="" name="name" id="name" type="text">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="country-select clearfix">
-                                                <label>Giới tính <span class="required">*</span></label>
+                                                <label>Gender<span class="required">*</span></label>
                                                 <select id="gender"  name="gender" class="nice-select wide">
-                                                  <option data-display="Nam">Nam</option>
+                                                  <option data-display="Nam">Man</option>
                                                   {{-- <option value="uk">Nam</option> --}}
-                                                  <option value="rou">Nữ</option>
+                                                  <option value="rou">Female</option>
                                                   {{-- <option value="fr">French</option>
                                                   <option value="de">Germany</option>
                                                   <option value="aus">Australia</option> --}}
@@ -91,7 +91,7 @@
                                         
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
-                                                <label>Địa chỉ <span class="required">*</span></label>
+                                                <label>Address<span class="required">*</span></label>
                                                 <input id="address" name="address" type="text">
                                             </div>
                                         </div>
@@ -122,8 +122,8 @@
                                         <div class="col-md-12">
                                             <div class="order-notes">
                                                 <div class="checkout-form-list">
-                                                    <label>Ghi chú</label>
-                                                    <input id="note" name="note" cols="30" rows="10" placeholder="Ghi chú thêm"></input>
+                                                    <label>Note</label>
+                                                    <input id="note" name="note" cols="30" rows="10" placeholder="Note"></input>
                                                 </div>
                                             </div>
                                         </div>
@@ -138,7 +138,7 @@
                                             <div class="checkout-form-list">
                                                 <input style="height: 20px" class="form-check-input" value="ATM" type="radio" name="payment" id="exampleRadios2" value="option2">
                                                 <label class="form-check-label" for="exampleRadios2">
-                                                    Trả thẻ ATM
+                                                    Pay ATM
                                                 </label>
                                             </div>
                                             {{-- <div class="checkout-form-list create-acc">

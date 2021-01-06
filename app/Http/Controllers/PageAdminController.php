@@ -17,9 +17,12 @@ class PageAdminController extends Controller
 {
     public function getIndex(){
         if (Auth::check()){
-            $product= Product::all();
-            return view('pageadmin.trangchuadmin',compact('product'));
-            // return view('pageadmin.trangchuadmin');
+            if (Auth::user()->role==1){
+                $product= Product::all();
+                return view('pageadmin.trangchuadmin',compact('product'));
+                // return view('pageadmin.trangchuadmin');
+            }
+            return redirect()->route('dangnhapadmin');
         }
         else{
             return redirect()->route('dangnhapadmin');
@@ -100,12 +103,15 @@ class PageAdminController extends Controller
 
     public function getCustomer(){
         if (Auth::check()){
-            $customer= Customer::all();
-            return view('pageadmin.customer',compact('customer'));
-            // return view('pageadmin.trangchuadmin');
+            if (Auth::user()->role==1){
+                $customer= Customer::all();
+                return view('pageadmin.customer',compact('customer'));
+                // return view('pageadmin.trangchuadmin');
+            }
+            return redirect()->route('dangnhapadmin');
         }
         else{
-            return redirect()->route('dangnhapadmin')->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
+            return redirect()->route('dangnhapadmin');
         }
         
     }
@@ -340,24 +346,30 @@ class PageAdminController extends Controller
 
     public function getUser(){
         if (Auth::check()){
-            $user= User::all();
-            return view('pageadmin.user',compact('user'));
-            // return view('pageadmin.trangchuadmin');
+            if (Auth::user()->role==1){
+                 $user= User::all();
+                return view('pageadmin.user',compact('user'));
+                // return view('pageadmin.trangchuadmin');
+            }
+            return redirect()->route('dangnhapadmin');
         }
         else{
-            return redirect()->route('dangnhapadmin')->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
+            return redirect()->route('dangnhapadmin');
         }
         
     }
 
     public function getProductType(){
         if (Auth::check()){
-            $producttype= ProductType::all();
-            return view('pageadmin.product_type',compact('producttype'));
-            // return view('pageadmin.trangchuadmin');
+            if (Auth::user()->role==1){
+                $producttype= ProductType::all();
+                return view('pageadmin.product_type',compact('producttype'));
+                // return view('pageadmin.trangchuadmin');
+            }
+            return redirect()->route('dangnhapadmin');
         }
         else{
-            return redirect()->route('dangnhapadmin')->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
+            return redirect()->route('dangnhapadmin');
         }
         
     }
@@ -384,10 +396,10 @@ class PageAdminController extends Controller
                                 'password'=>$req->password,
                                 'role'=>1);
             if(Auth::attempt($credentials)){
-                return redirect()->route('trangchuadmin')->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
+                return redirect()->route('trangchuadmin')->with(['flag'=>'success','message'=>'Login Success']);
             }
             else {
-                return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
+                return redirect()->back()->with(['flag'=>'danger','message'=>'Login fail']);
             }
     }
 }

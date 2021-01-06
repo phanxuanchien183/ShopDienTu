@@ -92,7 +92,7 @@
       <form action="{{route('productaddadmin')}}" method="POST">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
