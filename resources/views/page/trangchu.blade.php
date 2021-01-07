@@ -188,14 +188,14 @@
                                                 </div>
                                                 <h4><a class="product_name" href="{{route('chitietsanpham',$bestproduct->id)}}">{{$bestproduct->name}}</a></h4>
                                                 <div class="price-box">
-                                                    <span class="new-price">${{$bestproduct->promotion_price}}</span>
+                                                    <span class="new-price">${{$bestproduct->unit_price}}</span>
                                                 </div>
                                             </div>
                                             <div class="add-actions">
                                                 <ul class="add-actions-link">
                                                     <li class="add-cart active"><a href="{{route('themgiohang',$bestproduct->id)}}">Add to cart</a></li>
                                                     <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
-                                                    <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                                    <li><a href="#" title="quick view" data-name="{{$bestproduct}}" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -203,7 +203,22 @@
                                     <!-- single-product-wrap end -->
                                 </div>
                                    @endforeach
-                                    
+                                   <script>
+                                    $(document).on('ready',function(){
+                                        $(".quick-view-btn").on('click',function(){
+                                            var id = $(this).data('name').id;
+                                            // alert(id);
+                                            // var id=2;
+                                            $("#product-name").text($(this).data('name').name);
+                                            $("#product-price").text($(this).data('name').unit_price);
+                                            $("#product-description").text($(this).data('name').description);
+                                            // $("#product-image").text($(this).data('name').image);
+                                            $('img#product-image').attr('src', 'uiStore/images/product/smallsize/'+($(this).data('name').image));
+                                            $("#product-add-to-cart").attr("href", 'add-to-cart/'+id);
+                                           
+                                        })
+                                    })
+                                </script>
                                     
                                 </div>
                             </div>
@@ -239,14 +254,14 @@
                                                     </div>
                                                     <h4><a class="product_name" href="{{route('chitietsanpham',$sell->id)}}">{{$sell->name}}</a></h4>
                                                     <div class="price-box">
-                                                        <span class="new-price">${{$sell->promotion_price}}</span>
+                                                        <span class="new-price">${{$sell->unit_price}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
                                                         <li class="add-cart active"><a href="{{route('themgiohang',$sell->id)}}">Add to cart</a></li>
                                                         <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
-                                                        <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                                        <li><a href="#" title="quick view" data-name="{{$sell}}" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -254,7 +269,22 @@
                                         <!-- single-product-wrap end -->
                                     </div>
                                     @endforeach
-                                    
+                                    <script>
+                                        $(document).on('ready',function(){
+                                            $(".quick-view-btn").on('click',function(){
+                                                var id = $(this).data('name').id;
+                                                // alert(id);
+                                                // var id=2;
+                                                $("#product-name").text($(this).data('name').name);
+                                                $("#product-price").text($(this).data('name').unit_price);
+                                                $("#product-description").text($(this).data('name').description);
+                                                // $("#product-image").text($(this).data('name').image);
+                                                $('img#product-image').attr('src', 'uiStore/images/product/smallsize/'+($(this).data('name').image));
+                                                $("#product-add-to-cart").attr("href", 'add-to-cart/'+id);
+                                               
+                                            })
+                                        })
+                                    </script>
                                     
                                 </div>
                             </div>
@@ -344,14 +374,14 @@
                                                     </div>
                                                     <h4><a class="product_name" href="{{route('chitietsanpham',$lt->id)}}">{{$lt->name}}</a></h4>
                                                     <div class="price-box">
-                                                        <span class="new-price">${{$lt->promotion_price}}</span>
+                                                        <span class="new-price">${{$lt->unit_price}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
                                                         <li class="add-cart active"><a href="{{route('themgiohang',$lt->id)}}">Add to cart</a></li>
                                                         <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
-                                                        <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                                        <li><a href="#" title="quick view" data-name="{{$lt}}" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -359,7 +389,22 @@
                                         <!-- single-product-wrap end -->
                                     </div>
                                     @endforeach
-                                    
+                                    <script>
+                                        $(document).on('ready',function(){
+                                            $(".quick-view-btn").on('click',function(){
+                                                var id = $(this).data('name').id;
+                                                // alert(id);
+                                                // var id=2;
+                                                $("#product-name").text($(this).data('name').name);
+                                                $("#product-price").text($(this).data('name').unit_price);
+                                                $("#product-description").text($(this).data('name').description);
+                                                // $("#product-image").text($(this).data('name').image);
+                                                $('img#product-image').attr('src', 'uiStore/images/product/smallsize/'+($(this).data('name').image));
+                                                $("#product-add-to-cart").attr("href", 'add-to-cart/'+id);
+                                               
+                                            })
+                                        })
+                                    </script>
                                     
                                 </div>
                             </div>
@@ -415,7 +460,7 @@
                                                     </div>
                                                     <h4><a class="product_name" href="{{route('chitietsanpham',$tv->id)}}">{{$tv->name}}</a></h4>
                                                     <div class="price-box">
-                                                        <span class="new-price">${{$tv->promotion_price}}</span>
+                                                        <span class="new-price">${{$tv->unit_price}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="add-actions">
