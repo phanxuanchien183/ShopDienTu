@@ -128,7 +128,7 @@ class PageController extends Controller
             $bill_detail->save();
         }
         Session::forget('cart');
-        return redirect()->back()->with('thongbao','Đặt hàng thành công');
+        return redirect()->back()->with('thongbao','Ok');
     }
 
     public function getDangNhap(){
@@ -153,7 +153,7 @@ class PageController extends Controller
                                 'password'=>$req->password,
                                 'role'=>null);
             if(Auth::attempt($credentials)){
-                return redirect()->route('trangchu')->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
+                return redirect()->route('trangchu')->with(['flag'=>'success','message'=>'Ok']);
             }
             else {
                 return redirect()->back()->with(['flag'=>'danger','message'=>'Login fail']);
